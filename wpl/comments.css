@@ -1,0 +1,279 @@
+* {
+    padding: 0%;
+    margin: 0%;
+    font-family: "initial";
+    box-sizing: border-box;
+}
+/* body{
+    background-image: url("https://images-ext-2.discordapp.net/external/VA0rr0mk0aBKQSr4I7TXQiWBxXopnhWr-RNp5KmcJZ8/https/wpimg.pixelied.com/blog/wp-content/uploads/2020/08/28041815/Youtube-Collage.jpg?width=702&height=468");background-repeat: no-repeat;background-size: 120%;
+} */
+body {
+    background-color: none;
+}
+.yt {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    font-size: 30px;
+    padding-left: 5px;
+    font-weight: bold;
+    padding-left: 10px;
+    height: 5vh;
+    width: 15vw;
+    float: left;
+}
+.ot {
+    padding-top: 20%;
+    font-size: 40px;
+    border-bottom: 1px solid black;
+    color: grey;
+}
+
+/* .si {
+    background-color: white;
+    border-left: 1px solid grey;
+    ;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    box-sizing: border-box;
+    width: 3vw;
+    height: 6vh;
+} */
+
+.input3 {
+    background-color: transparent;
+    border: transparent;
+    float: right;
+    padding-right: 37px;
+    padding-top: 6px;
+}
+
+.searchbox {
+    background-color: transparent;
+    outline: none;
+    font-size: 150%;
+    border: transparent;
+    border-right: 0.2px solid grey;
+}
+
+.rt {
+
+    /* padding-bottom: 5px; */
+    background-color: white;
+    padding-left: 2%;
+    width: 30vw;
+    height: 6vh;
+    border-radius: 20px;
+    border: 0.2px solid grey;
+    outline: none;
+    margin-left: 110px;
+}
+
+nav {
+    background-color: white;
+    height: 15vh;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 100vw;
+}
+
+nav ul {
+    margin-left: 200px;
+}
+
+nav ul li {
+    /* margin-left: 200vw; */
+    margin-bottom: 20%;
+    display: inline-block;
+    /* line-height: 20px; */
+    margin: 15px
+}
+
+nav ul li a {
+    color: black;
+    font-size: 20px;
+}
+
+.input7 {
+    /* height: 55vh;
+ width: 27vh; */
+    background-color: white;
+    background-color: transparent;
+    padding-left: 60%;
+    padding-bottom: 10%;
+}
+
+.input1 {
+    size: 150px;
+    display: inline;
+    float: right;
+    margin-right: 40px;
+    justify-content: space-between;
+}
+
+.input1 a {
+    box-sizing: border-box;
+    display: inline-block;
+
+}
+
+.input5 {
+    margin-top: 100px;
+    padding-left: 5%;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.vedio {
+    flex-basis: 69%;
+}
+
+.vedio video {
+    width: 100%;
+}
+
+.side {
+    flex-basis: 30%;
+}
+
+.sidevedio video {
+    width: 100%;
+}
+
+.st {
+    color: black;
+    text-decoration: none;
+}
+
+.vedio .info{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap ;
+}
+.info {
+    border-bottom: 1px solid gray;
+    font-size: 25px;
+    /* height:100vh; */
+}
+
+.info i {
+    margin-left: 35px;
+    display: inline;
+}
+
+.tag h3 {
+    font-size: 250%;
+    padding-left: 5%;
+}
+
+.input6 {
+    padding-left: 2.5%;
+}
+
+.publisher {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    font-size: 150%;
+    border-bottom: 0.2px solid gray;
+}
+.info button {
+    justify-content: space-between;
+    margin-left: 25px;
+    margin-right: 100px;
+    background-color: red;
+    color: white;
+    width: 15vw;
+    height: 7vh;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    outline: none;
+    border: transparent;
+    display: inline;
+}
+.publisher i{
+
+    margin-left: 25px;
+}
+.comm h1{
+    font-size: 50px;
+    padding-left: 5%;
+    padding-top: 2%;
+    height: 2px;
+}
+.comm .acomm input{
+    display: inline;
+    box-sizing: content-box;
+    width:50vw;
+    height:15vh;
+    font-size:50px;
+    text-align:left;
+    color:black;
+    float:left;
+    padding-left:5%;
+    font-family: 'Cabin', sans-serif;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    background-color: transparent;
+    border-bottom:transparent;
+    outline: none;
+    padding-left: 1%;
+}
+
+.comm .acomm{
+    margin-top: 5%;
+    border-bottom: 0.00035px solid grey;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+   
+}
+.comm .acomm ::placeholder{
+    font-size: 35px;
+}
+.comm .acomm button{
+    display: inline-block;
+    font-size: 150%;
+    padding-bottom: 4%;
+    margin-top: 40px;
+    margin-right: 55px;
+    height: 30px;
+    border-radius: 10%;
+    flex-wrap: wrap;
+    text-decoration: none;
+}
+.prevcom{
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+    margin-left: 20px;
+}
+.revcom .pcam{
+    margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+}
+.pcam h3{
+    font-size: 150%;
+}
+.pcam p{
+    font-size: 140%;
+}
+.pcam a{
+    margin-left: 50px;
+    color: black;
+    text-decoration: none;
+}
+.pcam i{
+    display: inline;
+    justify-content: space-around;
+    margin-left: 20px;
+    font-size: 150%;
+}

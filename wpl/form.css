@@ -1,0 +1,45 @@
+*{
+    padding:0%;
+    margin: 0%;
+    font-family:"initial";
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url("https://www.shutterstock.com/image-photo/red-glitter-vintage-lights-background-260nw-571864537.jpg");background-repeat: no-repeat;background-size: 200%;
+}
+.container{
+    width: 200%;
+    height: 2500000000000%;
+    transform: translate(-50% -50%);
+    background-color:black;
+}
+
+.container h1{
+    font-size: 200%;
+    text-align: 20%;
+    color: white;
+
+}
+.input1{
+    font-size: 200%;
+    color: white
+}
+.input2{
+    font-size: 200%;
+    text-align: 30%;
+    color: white;
+}
+.input3{
+    font-size: 200%;
+    text-align: 30%;
+    color: white;
+}
+.input4{
+    width:20vw;
+    font-size: 200%;
+    color: white;
+    background-color: red;
+   
+}
+

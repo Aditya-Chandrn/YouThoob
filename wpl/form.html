@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="form.css">
+    <title>Create an account</title>
+</head>
+<body>
+  <h1 style="color:white"><CENTER>Create an Account</CENTER></h1>
+    <form  action="form1.php" method="post" enctype="multipart/form-data">
+      <div class="container" style="height:1500%">
+        <lable for="fname" class="input1">First name </lable>
+        <input type="text" name="fname" id="fname" placeholder="First name"></input>
+       <lable  for="mname"&nbsp class="input1">Middle Name</lable>
+        <input type="text"  name="mname" id="mname" placeholder="Middle name"></input>
+       <lable  for="lname" class="input1">Last Name</lable>
+       <input type="text"  name="lname" id="lname" placeholder="Last name"></input>
+       <br><br><label for="Gender" class="input1">Gender</label>
+       <br><br><select>
+        <option>Gender</option>
+       <option >Male</option>
+       <option>Female</option>
+       <option>TRANSGENDER</option></select>
+       <br><br><label for="Bdate" class="input1">Birth date</label><br>
+       <input type="date" name="bdname" id="bdname"><br><br>
+       <!-- <br><br> <lable for="Age" class="input1">Age</lable>
+       <input type="number" placeholder="Age"></input> -->
+        <lable for="Contact.Number" class="input1">Contact.Number</lable>
+       <input type="number" name="cno" id="cno" placeholder="Contact.Number"></input><br>
+       <lable for="Email" class="input1">Userid</lable>&nbsp;
+       <input type="Email" name="uname" id="uname" placeholder="Email"></input>&nbsp;&nbsp;&nbsp;
+      <lable  for="mname"&nbsp class="input1">Password</lable>&nbsp;
+       <input type="password" name="pass" id="pass" placeholder="password"></input> 
+         <!-- <BR><BR>  <label for="Address" class="input1">Address</label>
+       <br><br><textarea rows="2" coloumns="20" placeholder="Address"></textarea><BR><BR> -->
+      <br><br><lable for="fname" class="input1">City </lable>
+        <input type="text" name="cname" id="cname" placeholder="City"></input>
+       <lable  for="mname"&nbsp class="input1">State</lable>
+        <input type="text" name="sname" id="sname" placeholder="State"></input><br><br>
+         <div class="col-4">
+        <label class="form-label" style="color:white;font-size:200%" for="customFile">Select your photo</label>
+        <input type="file" name="file" id="file" class="form-control" id="customFile" />
+      </div><br> 
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" style="color:white" for="gridCheck">
+               I agree
+              </label>
+            </div>
+          </div><br>
+          <div class="col-12">
+           <button type="submit" style="color:white" class="input4" name="Sign-in" value="Sign-in">Submit</button></a>
+          </div>
+        </div>
+    </from>
+  </div>
+</body>
+</html>

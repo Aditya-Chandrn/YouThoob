@@ -1,0 +1,159 @@
+*{
+    padding:0%;
+    margin: 0%;
+    font-family:"initial";
+    box-sizing: border-box;
+    -moz-box-align: right;
+}
+
+body{
+    background-image: url("https://images-ext-2.discordapp.net/external/VA0rr0mk0aBKQSr4I7TXQiWBxXopnhWr-RNp5KmcJZ8/https/wpimg.pixelied.com/blog/wp-content/uploads/2020/08/28041815/Youtube-Collage.jpg?width=702&height=468");
+    background-repeat: no-repeat;
+    background-size: 85%;
+    background-color: rgb(74, 74, 74); 
+    background-blend-mode: multiply; 
+    height: 100vh;
+    /* position: absolute;  */
+    /* width: 1043px; 
+     height: 1117px;  */
+    /* left: 0px;
+    top: 0px;  */
+/* background: linear-gradient( to left ,229.25deg, rgba(10, 10, 10, 0.74) 33.82%, rgba(0, 0, 0, 0.13) 92.87%);  */
+    /* background-position-y: 10%; */
+    /* background-blend-mode: color-burn ; */
+    /* filter: brightness(5%); */
+    /* backdrop-filter:blur(1px); */
+}
+.container{
+    padding-left:5%;
+    width: 40vw;
+    height: 110vh;
+    border-left: 30vw;
+    border-right: 30vw;
+    float: right;
+    transform: translate(-50% -50%);
+    background-color:whitesmoke;
+    
+}
+
+.container h1{
+    font-size: 200%;
+    text-align: 20%;
+    color: black;
+
+}
+.input1{
+    
+   box-sizing: content-box;
+    width:33vw;
+    height:5vh;
+    margin-top: 0%;
+    font-size:100%;
+   text-align:left;
+    color:black;
+    float:left;
+    /* padding-left:5%; */
+    font-family: 'Cabin', sans-serif;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: 0.00035px solid grey;
+    background-color: transparent;
+    outline: none;
+    padding-left: 1%;
+}
+.input2{
+    box-sizing: border-box;
+    background-color:white;
+    font-family: 'Cabin', sans-serif;
+    color: black;
+    padding-left: 5%;
+}
+.input4{
+    width: 35vw;
+    height:5vw;
+    font-size: 100%;
+    text-align: center;
+    color: white;
+    border: 0;
+    background-color: red; 
+    padding-right: 10%;
+}
+.text{
+    font-size: 100%;
+    color:black;
+}
+.text1{
+    font-size: 150%;
+    font-family: 'Cabin', sans-serif;
+    text-align: left;
+    padding-left: 15%;
+}
+.text2{
+    text-align: right;
+    padding-right: 5%;
+    font-family: 'Cabin', sans-serif;
+    color:blue;
+    font-size: 50%;
+}
+.text3{
+    font-size: 170%;
+    text-align: left;
+    font-family: 'Cabin', sans-serif;
+    padding-left: 5%;
+}
+.text4{
+    text-align: left;
+    color:blue;
+    font-size: 60%;
+}
+.input3{
+    float:left;
+    background-color:white;
+    width: 4vw;
+    height: 6vh;
+}
+.input6{
+   background-color:transparent;
+    font-family: 'Cabin', sans-serif;
+    color:white;
+    font-size: 250%;
+    padding-bottom: 15%;
+    /* width: 5vw;
+    height: 7vh; */
+}
+.input5{
+    float:top;
+    float:left;
+    padding-left: 3%;
+    padding-top: 4%;
+}
+/* .input7{
+    border-top: 5px solid grey;
+    border-bottom: 5px solid grey;
+    background-color:transparent;
+    width: 20vw;
+    height:30vh;
+} */
+.input7{
+    /* position: absolute; */
+    border-top: 5px solid grey;
+    border-bottom: 5px solid grey;
+    width: 200px;
+    height: 140px;
+    left: 100px;
+      top: 45px;
+}
+    /* /* background:url("Google Logos By hrhasnai 37 asnai (37)"); */
+
+
+.text5{
+    color:grey;
+    float:left;
+    font-weight: normal;
+    font-family: 'Cabin', sans-serif;
+    font-size: 100%;
+}
+.b1{
+    background-color: wheat;
+}

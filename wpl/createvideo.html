@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File upload</title>
+</head>
+
+<body>
+    <form  action="createvideo.php" method="post" enctype="multipart/form-data">
+        <h1>Upload a File</h1><br>
+        <label for="fileselect">Please upload a File</label><br>
+        <input type="file" name="file" id="fileselect"><br>
+        <h1>Enter the subtitle of the file</h1><br>
+        <textarea rows="2" coloumns="20" placeholder="sub title" name="title" id="title"></textarea><br>
+        <button type="submit" name="submit" value="upload">Upload</button>
+    </form>
+</body>
+</html>
