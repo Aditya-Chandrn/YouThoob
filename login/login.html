@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ICON -->
+    <link rel="icon" type="image/jpg" href="../images/icon.png"/>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- LINKED FILES -->
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js"></script>
+
+    <title>Login</title>
+</head>
+
+
+<body>
+    
+    <!------------------ YOUTHOOB TITLE -------------------->
+    <div class="yt-head">
+        <img src="../images/youtube_icon.jpg" class='yt-icon' /> YouThoob
+    </div>
+    
+    <!------------------ LOGIN SECTION ---------------------->
+    <section class="login-section">
+        <div class="l-head">Sign In</div>
+
+        <form onsubmit="return Validate()" action="login.php"  method="post">
+        
+            <div class="input">
+                <div class="i1">
+                    <div class="i-head">Email</div>
+                    <input type="email" name="email" class="i-box" id="email" required></input><br>
+                </div>
+
+                <div class="i2">
+                    <div class="i-head">Password</div>
+                    <input type="password" name="password" class='i-box' id="password" required></input><br>
+                </div>
+            </div>
+        
+            <br>
+            <a href="../forgot_pass/forgot_pass.html">Forgot password</a>
+            <br>
+
+            <div>
+                <button type="submit" class="submit-btn sign-in" value="Submit">Sign In</button>
+            </div>
+
+            <div>
+                <button type="submit" class="submit-btn" value="Submit"><img class="g-icon" src="../images/google.png" height="25vw"> Sign in using Google</button>
+            </div>
+
+            <br>
+                <a href="../signup/signup.html">Create new account</a>
+            <br>
+
+        </form>
+
+    </section>
+
+</body>
+
+</html>
