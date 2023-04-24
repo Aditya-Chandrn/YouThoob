@@ -31,7 +31,7 @@
                 <div class="input1">
                     <li><a href="home1.php"><i class="bi bi-house-door"></i></a></li>
                     <li><a href="login1.html"><i class="bi bi-box-arrow-right"></i></a></li>
-                    <li><a href="createvideo.html"><i class="bi bi-camera-video"></i></a></li>
+                    <li><a href="../createvideo.html"><i class="bi bi-camera-video"></i></a></li>
                  
                     <li><a href="#"><i class="bi bi-bell"></i></a></li>
                     <li><a href="#"><img src="images/wpl\google.jpg.png"></a></li>
@@ -53,7 +53,7 @@ $row = $result->fetch_assoc();
 
                 <div class="vedio">
                 <video controls="" autoplay="" loop="">
-                <source src="<?php echo 'upload/'.$row['name'];?>">
+                <source src="<?php echo '../upload/'.$row['name'];?>">
 </video>
                     <div class="tag">
                         <h3><?php echo $row['title'];?></h3>
@@ -78,7 +78,15 @@ $row = $result->fetch_assoc();
         <div class="acomm">
         <input type="hidden" name="vid" id="vid" value="<?php echo $row['id']; ?>">
     <input  type="search" name="comment" id="comment" placeholder="Write a comment..."></input>
-    <button type="submit">Comment</button>
+    <label for="Gender" class="input1">Please rate the video</label>
+      <select class="input1" id="rating" name="rating">
+       <option>1</option>
+       <option>2</option>
+       <option>3</option>
+       <option>4</option>
+       <option>5</option>
+    </select>
+    <button type="submit" name="comment1" id="comment1">Comment</button>
         </div>
     </form>
     <?php
@@ -90,10 +98,10 @@ $row = $result->fetch_assoc();
         <!-- <img src="<?php echo $commentRow['user_image']; ?>"> -->
         <div class="pcam">
             <h3><?php echo $commentRow['username'] ; ?>&nbsp;&bull;&nbsp;<?php echo date('F j, Y', strtotime($commentRow['date']));?></h3>
-            <p><?php echo $commentRow['text']; ?></p>
+            <p><?php echo $commentRow['text']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; video rating &nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;<?php echo $commentRow['rating']; ?> </p>
             <i class="bi bi-hand-thumbs-up"><span class="like-count1">&nbsp;12</span></i>
             <i class="bi bi-hand-thumbs-down"><span class="like-count">&nbsp;2</span></i>
-            <a href=""><i>Replay</a></i>
+            <a href="#"><i>Replay</a></i>
         </div>
     </div>
     <?php
@@ -111,7 +119,7 @@ $row = $result->fetch_assoc();
                     <div class="sidevedio">
                         <a href="comments.php?id=<?php echo $row['id']; ?>" class="st">
                             <video controls="" autoplay="" loop="">
-                            <source src="<?php echo 'upload/'.$row['name'];?>">
+                            <source src="<?php echo '../upload/'.$row['name'];?>">
                             </video>
                             <div class="vidinfo">
                                 <p><?php echo $row['title'];?> &nbsp;&nbsp;&bull; <?php echo $row['username']; ?></p>

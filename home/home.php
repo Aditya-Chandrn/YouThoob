@@ -57,7 +57,7 @@
           &nbsp;&nbsp;&nbsp;<div style="display: inline-block;">
           <a href="../comments/comments.php?id=<?php echo $row['id']; ?>" class="input13">
             <video width="320" height="240" controls="" autoplay="" loop="">  
-            <source src="<?php echo 'upload/'.$row['name'];?>">
+            <source src="<?php echo '../upload/'.$row['name'];?>">
             </video>
             <div class="input17">
     <br><h3 class="input123" style="display: inline-block; font-size:50px "><?php echo $row['title'];?></h3><br>

@@ -1,5 +1,5 @@
 <?php 
-include("db.php");
+include('../db.php');
 session_start();
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
@@ -48,17 +48,17 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                     if (array_key_exists($ext, $allowed_videos)) {
                         if (in_array($filetype, $allowed_videos)) {
                             // Upload video and insert file information into database
-                            if (file_exists("upload/".$filename)) {
+                            if (file_exists('../upload/'.$filename)) {
                                 echo $filename . " already exists.";
                             } else {
-                                move_uploaded_file($_FILES["file"]["tmp_name"], "upload/".$filename);
+                                move_uploaded_file($_FILES["file"]["tmp_name"], '../upload/'.$filename);
                                 $sql = "INSERT INTO video (name, type, size, title, username, userid,images_source,accountid,date) 
                                         VALUES ('$filename', '$filetype', '$filesize', '$title', '$usname', '$id', '$img','$acid','$date')";
                                 if ($conn->query($sql) === TRUE) {
                                     $vid = $conn->insert_id;
                                     echo "Video file information was inserted into database successfully."."<br>";
                                     $_SESSION['id']=$vid;
-                                    header("Location: home1.php");
+                                    header("Location: ../home/home.php");
                                 } else {
                                     echo "Error: " . $sql . "<br>" . $conn->error;
                                 }
