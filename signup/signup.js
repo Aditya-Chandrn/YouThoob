@@ -1,5 +1,5 @@
 function Validate() {
-    var uname = document.getElementById("uname");
+    var uname = document.getElementById("email");
     var password = document.getElementById("password");
     var mailFormat= /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
     // if(uname.value==""){

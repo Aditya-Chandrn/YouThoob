@@ -29,9 +29,15 @@
                 </li>
                 <i class="bi bi-mic-fill" style="height: 100px;"></i>
                 <div class="input1">
+<<<<<<< HEAD
                     <li><a href="home1.php"><i class="bi bi-house-door"></i></a></li>
                     <li><a href="login1.html"><i class="bi bi-box-arrow-right"></i></a></li>
                     <li><a href="../createvideo.html"><i class="bi bi-camera-video"></i></a></li>
+=======
+                    <li><a href="../home/home.php"><i class="bi bi-house-door"></i></a></li>
+                    <li><a href="../login/login.html"><i class="bi bi-box-arrow-right"></i></a></li>
+                    <li><a href="../upload/createvideo.html"><i class="bi bi-camera-video"></i></a></li>
+>>>>>>> e381907b0bde71e172fb83c6e83118e8ec0f6bda
                  
                     <li><a href="#"><i class="bi bi-bell"></i></a></li>
                     <li><a href="#"><img src="images/wpl\google.jpg.png"></a></li>
@@ -44,16 +50,20 @@
             <?php
 session_start();
 include('../db.php');
-$id = $_GET['id'];
+$id = $_GET['video_id'];
 // query the database for the video information
-$result = $conn->query("SELECT * FROM video WHERE id = $id");
+$result = $conn->query("SELECT * FROM video WHERE video_id = $id");
 $row = $result->fetch_assoc();
 
 ?>
 
                 <div class="vedio">
                 <video controls="" autoplay="" loop="">
+<<<<<<< HEAD
                 <source src="<?php echo '../upload/'.$row['name'];?>">
+=======
+                <source src="<?php echo '../uploaded_vid/'.$row['name'];?>">
+>>>>>>> e381907b0bde71e172fb83c6e83118e8ec0f6bda
 </video>
                     <div class="tag">
                         <h3><?php echo $row['title'];?></h3>
@@ -76,7 +86,7 @@ $row = $result->fetch_assoc();
     <h1>30&nbsp;Comments</h1><br>
     <form action="comments1.php" method="post" enctype="multipart/form-data">
         <div class="acomm">
-        <input type="hidden" name="vid" id="vid" value="<?php echo $row['id']; ?>">
+        <input type="hidden" name="video_id" id="video_id" value="<?php echo $row['video_id']; ?>">
     <input  type="search" name="comment" id="comment" placeholder="Write a comment..."></input>
     <label for="Gender" class="input1">Please rate the video</label>
       <select class="input1" id="rating" name="rating">
@@ -91,7 +101,7 @@ $row = $result->fetch_assoc();
     </form>
     <?php
     // query the database for comments on the video
-    $commentResult = $conn->query("SELECT * FROM comments WHERE vid = $id");
+    $commentResult = $conn->query("SELECT * FROM comments WHERE video = $id");
     while ($commentRow = $commentResult->fetch_assoc()) {
     ?>
     <div class="prevcom">
@@ -117,9 +127,13 @@ $row = $result->fetch_assoc();
         while($row=mysqli_fetch_array($query)){
           ?>
                     <div class="sidevedio">
-                        <a href="comments.php?id=<?php echo $row['id']; ?>" class="st">
+                        <a href="comments.php?id=<?php echo $row['video_id']; ?>" class="st">
                             <video controls="" autoplay="" loop="">
+<<<<<<< HEAD
                             <source src="<?php echo '../upload/'.$row['name'];?>">
+=======
+                            <source src="<?php echo '../uploaded_vid/'.$row['name'];?>">
+>>>>>>> e381907b0bde71e172fb83c6e83118e8ec0f6bda
                             </video>
                             <div class="vidinfo">
                                 <p><?php echo $row['title'];?> &nbsp;&nbsp;&bull; <?php echo $row['username']; ?></p>
