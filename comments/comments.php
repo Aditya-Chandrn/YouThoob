@@ -29,15 +29,9 @@
                 </li>
                 <i class="bi bi-mic-fill" style="height: 100px;"></i>
                 <div class="input1">
-<<<<<<< HEAD
-                    <li><a href="home1.php"><i class="bi bi-house-door"></i></a></li>
-                    <li><a href="login1.html"><i class="bi bi-box-arrow-right"></i></a></li>
-                    <li><a href="../createvideo.html"><i class="bi bi-camera-video"></i></a></li>
-=======
                     <li><a href="../home/home.php"><i class="bi bi-house-door"></i></a></li>
                     <li><a href="../login/login.html"><i class="bi bi-box-arrow-right"></i></a></li>
                     <li><a href="../upload/createvideo.html"><i class="bi bi-camera-video"></i></a></li>
->>>>>>> e381907b0bde71e172fb83c6e83118e8ec0f6bda
                  
                     <li><a href="#"><i class="bi bi-bell"></i></a></li>
                     <li><a href="#"><img src="images/wpl\google.jpg.png"></a></li>
@@ -59,11 +53,7 @@ $row = $result->fetch_assoc();
 
                 <div class="vedio">
                 <video controls="" autoplay="" loop="">
-<<<<<<< HEAD
-                <source src="<?php echo '../upload/'.$row['name'];?>">
-=======
                 <source src="<?php echo '../uploaded_vid/'.$row['name'];?>">
->>>>>>> e381907b0bde71e172fb83c6e83118e8ec0f6bda
 </video>
                     <div class="tag">
                         <h3><?php echo $row['title'];?></h3>
