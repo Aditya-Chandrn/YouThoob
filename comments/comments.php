@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="comments.css">
 </head>
 <body>
-    <form>
+ 
 
         <nav>
             <div class='yt'>
@@ -29,8 +29,10 @@
                 </li>
                 <i class="bi bi-mic-fill" style="height: 100px;"></i>
                 <div class="input1">
+                    <li><a href="home1.php"><i class="bi bi-house-door"></i></a></li>
+                    <li><a href="login1.html"><i class="bi bi-box-arrow-right"></i></a></li>
                     <li><a href="createvideo.html"><i class="bi bi-camera-video"></i></a></li>
-                    <li><a href="#"><img src="images/more.png"></a></li>
+                 
                     <li><a href="#"><i class="bi bi-bell"></i></a></li>
                     <li><a href="#"><img src="images/wpl\google.jpg.png"></a></li>
                 </div>
@@ -39,59 +41,80 @@
         </nav>
         <div class="input5">
             <div class="row">
+            <?php
+session_start();
+include('../db.php');
+$id = $_GET['id'];
+// query the database for the video information
+$result = $conn->query("SELECT * FROM video WHERE id = $id");
+$row = $result->fetch_assoc();
+
+?>
+
                 <div class="vedio">
-                    <video controls="" autoplay="" loop="">
-                        <source src="ap vedio.mp4" type="video/mp4">
-                    </video>
+                <video controls="" autoplay="" loop="">
+                <source src="<?php echo 'upload/'.$row['name'];?>">
+</video>
                     <div class="tag">
-                        <h3>Food Video</h3>
+                        <h3><?php echo $row['title'];?></h3>
                     </div>
                     <div class="info">
-                        <p>Omkar Boralkar&nbsp; &bull;500k subscribers</p><br>
+                        <p><?php echo $row['username'] ; ?>&nbsp; &bull;500k subscribers</p><br>
                         <div>
-                            <i class="bi bi-hand-thumbs-up">&nbsp;123</i>
-                            <i class="bi bi-hand-thumbs-down">&nbsp;12</i>
+                            <i  id="like" class="bi bi-hand-thumbs-up"><span class="like-count">&nbsp;123</span></i>
+                            <i id="dislike " class="bi bi-hand-thumbs-down"><span class="like-count">&nbsp;12</span></i>
                             <i class="bi bi-share">&nbsp;Share</i>
                             <i class="bi bi-download">&nbsp;Download</i>
-                            <button type="button">&nbsp;Subscribe</button>
+                            <button type="submit">Subscribe</button>
                         </div>
                     </div>
                     <div class="publisher">
-                        <p class="input6">12K views &nbsp; &nbsp;&nbsp;&bull;5 days ago</p>
-                        <i>This video tells us about the food culture and the places </i>
-                    </div>
-                    <div class="comm">
-                        <h1>30&nbsp;Comments</h1><br>
-                        <div class="acomm">
-                            <input type="search" placeholder="Comments">
-                            <button type="submit" value="Submit" >Comment</button>
-                        </div>
-                        <div class="prevcom">
-                            <img src="#"/>
-                            <div class="pcam">
-                                <h3>Omkar Boralkar &nbsp;&nbsp;&nbsp;&bull;&nbsp;2days ago</span></h3>
-                                <p>This is very fantastic vedio</p>
-                                <i class="bi bi-hand-thumbs-up">&nbsp;12</i>
-                                <i class="bi bi-hand-thumbs-down">&nbsp;2</i>
-                                <a href=""><i>Replay</a></i>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
+        <p class="input6">12K views &nbsp; &nbsp;&nbsp;&bull;<?php echo date('F j, Y', strtotime($row['date'])); ?></p>
+        <i>This video tells us about the food culture and the places </i>
+    </div>
+    <div class="comm">
+    <h1>30&nbsp;Comments</h1><br>
+    <form action="comments1.php" method="post" enctype="multipart/form-data">
+        <div class="acomm">
+        <input type="hidden" name="vid" id="vid" value="<?php echo $row['id']; ?>">
+    <input  type="search" name="comment" id="comment" placeholder="Write a comment..."></input>
+    <button type="submit">Comment</button>
+        </div>
+    </form>
+    <?php
+    // query the database for comments on the video
+    $commentResult = $conn->query("SELECT * FROM comments WHERE vid = $id");
+    while ($commentRow = $commentResult->fetch_assoc()) {
+    ?>
+    <div class="prevcom">
+        <!-- <img src="<?php echo $commentRow['user_image']; ?>"> -->
+        <div class="pcam">
+            <h3><?php echo $commentRow['username'] ; ?>&nbsp;&bull;&nbsp;<?php echo date('F j, Y', strtotime($commentRow['date']));?></h3>
+            <p><?php echo $commentRow['text']; ?></p>
+            <i class="bi bi-hand-thumbs-up"><span class="like-count1">&nbsp;12</span></i>
+            <i class="bi bi-hand-thumbs-down"><span class="like-count">&nbsp;2</span></i>
+            <a href=""><i>Replay</a></i>
+        </div>
+    </div>
+    <?php
+    }
+    ?>
+</div>
+</div>
                 <div class="side">
                 <?php
-        include("db.php");
+        include('../db.php');
         $q="SELECT * FROM video";
         $query=mysqli_query($conn,$q);
         while($row=mysqli_fetch_array($query)){
           ?>
                     <div class="sidevedio">
-                        <a href="#" class="st">
+                        <a href="comments.php?id=<?php echo $row['id']; ?>" class="st">
                             <video controls="" autoplay="" loop="">
                             <source src="<?php echo 'upload/'.$row['name'];?>">
                             </video>
                             <div class="vidinfo">
-                                <p><?php echo $row['title'];?> &nbsp;&nbsp;&bull; Omkar Boralkar</p>
+                                <p><?php echo $row['title'];?> &nbsp;&nbsp;&bull; <?php echo $row['username']; ?></p>
                                 <p>15k views</p>
                             </div>
                     </a>
@@ -102,6 +125,6 @@
             </div>
         </div>
     </div>
-</form>
+
 </body>
 </html>

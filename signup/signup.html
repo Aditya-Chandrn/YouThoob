@@ -15,7 +15,7 @@
 
     <!-- LINKED FILES  -->
     <link rel="stylesheet" href="signup.css">
-
+    <script src="signup.js"></script>
     <title>Sign Up</title>
 </head>
 <body>
@@ -27,27 +27,30 @@
   <section class="signup">
 
     <div class="s-head">Sign Up</div>
-    <form onsubmit="return Validate()" action="signup.php"  method="post">
+    <form onsubmit="return Validate()" action="signup.php"  method="post" enctype="multipart/form-data">
     
       <div class="input">
         <div class="i1">
             <div class="i-head">Username</div>
-            <input type="text" name="username" class='i-box' id="username" required></input><br>
+            <input type="text" name="usname" class='i-box' id="usname" required></input><br>
         </div>
 
         <div class="i2">
             <div class="i-head">Email</div>
-            <input type="email" name="email" class="i-box" id="email" required></input><br>
+            <input type="email" name="uname" class="i-box" id="uname" required></input><br>
         </div>
         
         <div class="i3">
             <div class="i-head">Password</div>
-            <input type="password" name="password" class='i-box' id="password" required></input><br>
+            <input type="password" name="pass" class='i-box' id="pass" required></input><br>
         </div>
       </div>
-
+      <div class="col-4">
+        <label class="form-label" style="color:white;font-size:200%" for="customFile">Select your photo</label>
+        <input type="file" name="file" id="file" class="form-control" id="customFile" />
+      </div><br> 
       <div>
-        <button type="submit" class="submit-btn register" value="Submit">Register</button>
+        <button type="submit" class="submit-btn register"name="Sign-up" value="Sign-up">Register</button>
       </div>
 
     </form>

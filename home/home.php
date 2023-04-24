@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="home.php">
+    <link rel="stylesheet" href="home2.php">
 </head>
 <body>
   
@@ -25,6 +25,7 @@
               <a href="#"><i class="bi bi-house">&nbsp;&nbsp;Playist</p></i></a>
               <a href="#"><i class="bi bi-envelope">&nbsp;&nbsp;Messages</p></i></a>
               <a href="#"><i class="bi bi-gear">&nbsp;&nbsp;Settings</p></i></a>
+              <a href="login1.html"><i class="bi bi-box-arrow-right">&nbsp;&nbsp;Logout</p></i></a>
             </div>
         </div>
         <ul>
@@ -34,30 +35,35 @@
             </li>
             <i class="bi bi-mic-fill" style="height: 100px;"></i>
                       <div class="input1">
-                        <li><a href="createvideo.html"><i class="bi bi-camera-video"></i></a></li>
-                        <li><a href="#"><img src="images/more.png"></a></li>
+                    
+                        <li><a href="../login/login.html"><i class="bi bi-box-arrow-right"></i></a></li>
+                        <li><a href="../upload_vid/createvideo.html"><i class="bi bi-camera-video"></i></a></li>
                         <li><a href="#"><i class="bi bi-bell"></i></a></li>
                         <li><a href="#"><img src="images/wpl\google.jpg.png"></a></li>
+
                       </div>
                     </ul>
             </nav>
             <div class="input5">
             <?php
-        include("db.php");
+        include('../db.php');
         $q="SELECT * FROM video";
+        $r="SELECT * FROM createaccount";
         $query=mysqli_query($conn,$q);
+        $query1=mysqli_query($conn,$r);
+        $row1=mysqli_fetch_array($query1);
         while($row=mysqli_fetch_array($query)){
           ?>
           &nbsp;&nbsp;&nbsp;<div style="display: inline-block;">
-          <a href="comments.php" class="input13">
+          <a href="../comments/comments.php?id=<?php echo $row['id']; ?>" class="input13">
             <video width="320" height="240" controls="" autoplay="" loop="">  
             <source src="<?php echo 'upload/'.$row['name'];?>">
             </video>
             <div class="input17">
-           <br><h3  class="input123" style="display: inline-block; font-size:50px "><?php echo $row['title'];?></h3><br>
-           <p class="input12">3k views &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4weeks ago</p>
-          <p class="input12"> <img src="wpl\r1.jpg">&nbsp; Omkar Boralkar</p>
-        </div>
+    <br><h3 class="input123" style="display: inline-block; font-size:50px "><?php echo $row['title'];?></h3><br>
+    <p class="input12">3k views &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('F j, Y', strtotime($row['date'])); ?></p>
+    <p class="input12">&nbsp; <?php echo $row['username'];?></p>
+</div>
       </div>
         </a>
 <?php
