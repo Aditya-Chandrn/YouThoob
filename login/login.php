@@ -5,7 +5,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $password = $_POST['password'];
     
     // prepare the query
-    $stmt = $conn->prepare("SELECT * FROM createaccount WHERE userid = ? AND password = ?");
+    $stmt = $conn->prepare("SELECT * FROM createaccount WHERE email = ? AND password = ?");
     $stmt->bind_param("ss", $email, $password);
     $stmt->execute();
     
@@ -19,8 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         exit();
     }
     else{
-        // display an error message
-        echo "Invalid email or password";
+        header("Location: ../login/login.html");
     }
 }
 ?>

@@ -25,7 +25,7 @@
               <a href="#"><i class="bi bi-house">&nbsp;&nbsp;Playist</p></i></a>
               <a href="#"><i class="bi bi-envelope">&nbsp;&nbsp;Messages</p></i></a>
               <a href="#"><i class="bi bi-gear">&nbsp;&nbsp;Settings</p></i></a>
-              <a href="login1.html"><i class="bi bi-box-arrow-right">&nbsp;&nbsp;Logout</p></i></a>
+              <a href="../login/login.html"><i class="bi bi-box-arrow-right">&nbsp;&nbsp;Logout</p></i></a>
             </div>
         </div>
         <ul>
@@ -55,9 +55,9 @@
         while($row=mysqli_fetch_array($query)){
           ?>
           &nbsp;&nbsp;&nbsp;<div style="display: inline-block;">
-          <a href="../comments/comments.php?id=<?php echo $row['id']; ?>" class="input13">
+          <a href="../comments/comments.php?id=<?php echo $row['video_id']; ?>" class="input13">
             <video width="320" height="240" controls="" autoplay="" loop="">  
-            <source src="<?php echo 'upload/'.$row['name'];?>">
+            <source src="<?php echo '../uploaded_vid/'.$row['name'];?>">
             </video>
             <div class="input17">
     <br><h3 class="input123" style="display: inline-block; font-size:50px "><?php echo $row['title'];?></h3><br>

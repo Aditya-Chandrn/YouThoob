@@ -2,28 +2,28 @@
 session_start(); // Start the session
 include('../db.php');
 if(isset($_POST['Sign-up'])){
-    $uname=$_POST['uname'];
-    $pass =$_POST['pass'];
-    $usname=$_POST['usname'];
+    $email=$_POST['email'];
+    $password =$_POST['password'];
+    $username=$_POST['username'];
    
-    if(empty($usname)){
+    if(empty($username)){
         echo "Please enter all the creditals ";
     }
-    if(empty($uname) || empty($pass)) {
+    if(empty($email) || empty($password)) {
         echo "Please enter both User ID and Password";
     }
     else {
-        $sql = "SELECT * FROM createaccount WHERE userid='$uname'";
+        $sql = "SELECT * FROM createaccount WHERE email='$email'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             // Set session variables
-            $_SESSION['userid'] = $uname;
+            $_SESSION['email'] = $email;
             $_SESSION['loggedin'] = true;
             echo "User ID already exist";
         }
         else {
             // proceed with inserting the new record
-            // $usname=$_POST['usname'];
+            // $username=$_POST['username'];
             $allowed_images = array("jpg" => "image/jpg", "png" => "image/png", "jpeg" => "image/jpeg");
             $filename = $_FILES["file"]["name"];
             if(empty($filename)) {
@@ -41,7 +41,7 @@ if(isset($_POST['Sign-up'])){
                             echo $filename . " already exists.";
                         } else {
                             move_uploaded_file($tempname,$folder);
-                            $sql = "INSERT INTO createaccount(username,userid, password, images_source) VALUES ('$usname' ,'$uname', '$pass', '$filename')";
+                            $sql = "INSERT INTO createaccount(email,username, password, image) VALUES ('$email' ,'$username', '$password', '$filename')";
                             echo "Your image file was uploaded successfully.";
                         }
                     } 
@@ -54,7 +54,7 @@ if(isset($_POST['Sign-up'])){
                 }
                 if ($conn->query($sql) === TRUE) {
                     // Set session variables
-                    $_SESSION['userid'] = $uname;
+                    $_SESSION['email'] = $email;
                     $_SESSION['loggedin'] = true;
                     echo "New record created successfully";
                     header("Location: ../login/login.html");
