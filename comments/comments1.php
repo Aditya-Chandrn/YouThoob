@@ -37,7 +37,7 @@ if(isset($_POST['comment1'])) {
         
         if(mysqli_stmt_execute($stmt)) {
             // Comment inserted successfully
-            header("Location: ../comments/comments.php?video_id=$vid");
+            header("Location: ../comments/comments.php?id=$vid");
             exit(); // Stop script execution
         } 
         else {

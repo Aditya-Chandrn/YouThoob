@@ -31,7 +31,7 @@
                 <div class="input1">
                     <li><a href="../home/home.php"><i class="bi bi-house-door"></i></a></li>
                     <li><a href="../login/login.html"><i class="bi bi-box-arrow-right"></i></a></li>
-                    <li><a href="..upload_vid/createvideo.html"><i class="bi bi-camera-video"></i></a></li>
+                    <li><a href="../upload_vid/createvideo.html"><i class="bi bi-camera-video"></i></a></li>
                  
                     <li><a href="#"><i class="bi bi-bell"></i></a></li>
                     <li><a href="#"><img src="images/wpl\google.jpg.png"></a></li>
@@ -44,7 +44,7 @@
             <?php
 session_start();
 include('../db.php');
-$id = $_GET['video_id'];
+$id = $_GET['id'];
 // query the database for the video information
 $result = $conn->query("SELECT * FROM video WHERE video_id = $id");
 $row = $result->fetch_assoc();
