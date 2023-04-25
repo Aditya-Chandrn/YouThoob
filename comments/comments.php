@@ -119,11 +119,7 @@ $row = $result->fetch_assoc();
                     <div class="sidevedio">
                         <a href="comments.php?id=<?php echo $row['video_id']; ?>" class="st">
                             <video controls="" autoplay="" loop="">
-<<<<<<< HEAD
-                            <source src="<?php echo '../upload/'.$row['name'];?>">
-=======
                             <source src="<?php echo '../uploaded_vid/'.$row['name'];?>">
->>>>>>> e381907b0bde71e172fb83c6e83118e8ec0f6bda
                             </video>
                             <div class="vidinfo">
                                 <p><?php echo $row['title'];?> &nbsp;&nbsp;&bull; <?php echo $row['username']; ?></p>

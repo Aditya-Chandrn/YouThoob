@@ -57,11 +57,7 @@
           &nbsp;&nbsp;&nbsp;<div style="display: inline-block;">
           <a href="../comments/comments.php?id=<?php echo $row['video_id']; ?>" class="input13">
             <video width="320" height="240" controls="" autoplay="" loop="">  
-<<<<<<< HEAD
-            <source src="<?php echo '../upload/'.$row['name'];?>">
-=======
             <source src="<?php echo '../uploaded_vid/'.$row['name'];?>">
->>>>>>> e381907b0bde71e172fb83c6e83118e8ec0f6bda
             </video>
             <div class="input17">
     <br><h3 class="input123" style="display: inline-block; font-size:50px "><?php echo $row['title'];?></h3><br>
