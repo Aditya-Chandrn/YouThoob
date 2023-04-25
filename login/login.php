@@ -11,10 +11,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
     // get the result
     $result = $stmt->get_result();
-    
+  
     // check if the result is not empty
     if($result->num_rows > 0){
         // redirect to home.php
+        $_SESSION['email'] = $email;
         header("Location: ../home/home.php");
         exit();
     }
