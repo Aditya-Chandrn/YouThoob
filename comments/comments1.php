@@ -6,9 +6,9 @@ var_dump($_SESSION); // Debug: check session variables
 var_dump($_POST); // Debug: check form data
 
 if(isset($_POST['comment'])) {
-    if(isset($_SESSION['email']) && isset($_POST['video_id'])) {
+    if(isset($_SESSION['email']) && isset($_POST['video'])) {
         $email = $_SESSION['email'];
-        $vid = $_POST['video_id'];
+        $vid = $_POST['video'];
         
         // Check if the video ID is valid
         $sql = "SELECT video_id FROM video WHERE video_id='$vid'";
