@@ -1,5 +1,9 @@
 <?php 
+<<<<<<< HEAD
+include('../db.php');
+=======
 include("../db.php");
+>>>>>>> e381907b0bde71e172fb83c6e83118e8ec0f6bda
 session_start();
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
@@ -48,12 +52,21 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                     if (array_key_exists($ext, $allowed_videos)) {
                         if (in_array($filetype, $allowed_videos)) {
                             // Upload video and insert file information into database
+<<<<<<< HEAD
+                            if (file_exists('../upload/'.$filename)) {
+                                echo $filename . " already exists.";
+                            } else {
+                                move_uploaded_file($_FILES["file"]["tmp_name"], '../upload/'.$filename);
+                                $sql = "INSERT INTO video (name, type, size, title, username, userid,images_source,accountid,date) 
+                                        VALUES ('$filename', '$filetype', '$filesize', '$title', '$usname', '$id', '$img','$acid','$date')";
+=======
                             if (file_exists("../uploaded_vid/".$filename)) {
                                 echo $filename . " already exists.";
                             } else {
                                 move_uploaded_file($_FILES["file"]["tmp_name"], "../uploaded_vid/".$filename);
                                 $sql = "INSERT INTO video (name, type, size, title, username, email,images_source,user_id,date) 
                                         VALUES ('$filename', '$filetype', '$filesize', '$title', '$username', '$id', '$img','$acid','$date')";
+>>>>>>> e381907b0bde71e172fb83c6e83118e8ec0f6bda
                                 if ($conn->query($sql) === TRUE) {
                                     $vid = $conn->insert_id;
                                     echo "Video file information was inserted into database successfully."."<br>";

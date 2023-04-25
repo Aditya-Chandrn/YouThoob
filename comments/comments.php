@@ -78,7 +78,15 @@ $row = $result->fetch_assoc();
         <div class="acomm">
         <input type="hidden" name="video_id" id="video_id" value="<?php echo $row['video_id']; ?>">
     <input  type="search" name="comment" id="comment" placeholder="Write a comment..."></input>
-    <button type="submit">Comment</button>
+    <label for="Gender" class="input1">Please rate the video</label>
+      <select class="input1" id="rating" name="rating">
+       <option>1</option>
+       <option>2</option>
+       <option>3</option>
+       <option>4</option>
+       <option>5</option>
+    </select>
+    <button type="submit" name="comment1" id="comment1">Comment</button>
         </div>
     </form>
     <?php
@@ -90,10 +98,10 @@ $row = $result->fetch_assoc();
         <!-- <img src="<?php echo $commentRow['user_image']; ?>"> -->
         <div class="pcam">
             <h3><?php echo $commentRow['username'] ; ?>&nbsp;&bull;&nbsp;<?php echo date('F j, Y', strtotime($commentRow['date']));?></h3>
-            <p><?php echo $commentRow['text']; ?></p>
+            <p><?php echo $commentRow['text']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; video rating &nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;<?php echo $commentRow['rating']; ?> </p>
             <i class="bi bi-hand-thumbs-up"><span class="like-count1">&nbsp;12</span></i>
             <i class="bi bi-hand-thumbs-down"><span class="like-count">&nbsp;2</span></i>
-            <a href=""><i>Replay</a></i>
+            <a href="#"><i>Replay</a></i>
         </div>
     </div>
     <?php
@@ -111,7 +119,11 @@ $row = $result->fetch_assoc();
                     <div class="sidevedio">
                         <a href="comments.php?id=<?php echo $row['video_id']; ?>" class="st">
                             <video controls="" autoplay="" loop="">
+<<<<<<< HEAD
+                            <source src="<?php echo '../upload/'.$row['name'];?>">
+=======
                             <source src="<?php echo '../uploaded_vid/'.$row['name'];?>">
+>>>>>>> e381907b0bde71e172fb83c6e83118e8ec0f6bda
                             </video>
                             <div class="vidinfo">
                                 <p><?php echo $row['title'];?> &nbsp;&nbsp;&bull; <?php echo $row['username']; ?></p>
