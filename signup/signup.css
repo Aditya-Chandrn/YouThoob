@@ -101,7 +101,7 @@ input{
 /* submit buttons */
 
 .submit-btn{
-    margin-top: 4vw;
+    margin-top: 5vh;
     padding: 1vw;
     width: 100%;
     font-weight: 500;
@@ -114,4 +114,15 @@ input{
     color: white;
     border: none;
     background-color: var(--red);
+}
+
+.upload{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.select{
+    flex-basis: 40%;
+    width: 30vw;
 }

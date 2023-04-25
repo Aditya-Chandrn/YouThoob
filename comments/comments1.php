@@ -5,9 +5,9 @@ include('../db.php'); // Include your database connection file
 var_dump($_SESSION); // Debug: check session variables
 var_dump($_POST); // Debug: check form data
 
-if(isset($_POST['comment'])) {
-    if(isset($_SESSION['userid']) && isset($_POST['vid'])) {
-        $email = $_SESSION['userid'];
+if(isset($_POST['comment1'])) {
+    if(isset($_SESSION['email']) && isset($_POST['vid'])) {
+        $email = $_SESSION['email'];
         $vid = $_POST['vid'];
         
         // Check if the video ID is valid
@@ -28,9 +28,10 @@ if(isset($_POST['comment'])) {
         $row1 = $result1->fetch_assoc();
         // Use prepared statements to insert the comment
         $comment = $_POST['comment'];
+        $rating = $_POST['rating'];
         $usname = $row1['username'];
         $date = date('Y-m-d H:i:s');
-        $query = "INSERT INTO comments (text, userid, vid, username,date) VALUES ('$comment', '$email', '$vid', '$usname','$date')";
+        $query = "INSERT INTO comments (text, rating,email, video_id, username,date) VALUES ('$comment','$rating ', '$email', '$vid', '$usname','$date')";
         $stmt = mysqli_prepare($conn, $query);
 
         
