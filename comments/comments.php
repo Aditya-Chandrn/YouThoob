@@ -31,7 +31,7 @@
                 <div class="input1">
                     <li><a href="../home/home.php"><i class="bi bi-house-door"></i></a></li>
                     <li><a href="../login/login.html"><i class="bi bi-box-arrow-right"></i></a></li>
-                    <li><a href="../upload/createvideo.html"><i class="bi bi-camera-video"></i></a></li>
+                    <li><a href="..upload_vid/createvideo.html"><i class="bi bi-camera-video"></i></a></li>
                  
                     <li><a href="#"><i class="bi bi-bell"></i></a></li>
                     <li><a href="#"><img src="images/wpl\google.jpg.png"></a></li>
@@ -76,7 +76,7 @@ $row = $result->fetch_assoc();
     <h1>30&nbsp;Comments</h1><br>
     <form action="comments1.php" method="post" enctype="multipart/form-data">
         <div class="acomm">
-        <input type="hidden" name="video_id" id="video_id" value="<?php echo $row['video_id']; ?>">
+        <input type="hidden" name="vid" id="vid" value="<?php echo $row['video_id']; ?>">
     <input  type="search" name="comment" id="comment" placeholder="Write a comment..."></input>
     <label for="Gender" class="input1">Please rate the video</label>
       <select class="input1" id="rating" name="rating">
@@ -91,7 +91,7 @@ $row = $result->fetch_assoc();
     </form>
     <?php
     // query the database for comments on the video
-    $commentResult = $conn->query("SELECT * FROM comments WHERE video = $id");
+    $commentResult = $conn->query("SELECT * FROM comments WHERE video_id = $id");
     while ($commentRow = $commentResult->fetch_assoc()) {
     ?>
     <div class="prevcom">
