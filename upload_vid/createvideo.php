@@ -78,7 +78,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         } else {
             echo "Error: Please upload a file."."<br>";
         }
-    } else {
+    } 
+    else {
         echo "Error: User not logged in."."<br>";
     }
 }

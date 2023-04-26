@@ -1,5 +1,6 @@
 <?php
 include('../db.php');
+session_start();
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -20,6 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         exit();
     }
     else{
+        // alert("Invalid Email ID AND PASSWORD");
         header("Location: ../login/login.html");
     }
 }
