@@ -2,15 +2,13 @@
 session_start(); // Start the session
 include('../db.php'); // Include your database connection file
 
-var_dump($_SESSION); // Debug: check session variables
-var_dump($_POST); // Debug: check form data
+// var_dump($_SESSION); // Debug: check session variables
+// var_dump($_POST); // Debug: check form data
 
 if(isset($_POST['comment1'])) {
     if(isset($_SESSION['email']) && isset($_POST['vid'])) {
         $email = $_SESSION['email'];
         $vid = $_POST['vid'];
-        
-        // Check if the video ID is valid
         $sql = "SELECT video_id FROM video WHERE video_id='$vid'";
         $sql1="SELECT  username,email,image FROM createaccount WHERE email='".$_SESSION['email']."'";
         $result = $conn->query($sql);
@@ -21,7 +19,7 @@ if(isset($_POST['comment1'])) {
             exit();
         }
         if($result1->num_rows == 0) {
-            // Video ID is invalid, display an error message and stop script execution
+            // Email is invalid, display an error message and stop script execution
             echo "Invalid email ID";
             exit();
         }
@@ -31,25 +29,34 @@ if(isset($_POST['comment1'])) {
         $rating = $_POST['rating'];
         $usname = $row1['username'];
         $date = date('Y-m-d H:i:s');
-        $query = "INSERT INTO comments (text, rating,email, video_id, username,date) VALUES ('$comment','$rating ', '$email', '$vid', '$usname','$date')";
-        $stmt = mysqli_prepare($conn, $query);
-
-        
-        if(mysqli_stmt_execute($stmt)) {
-            // Comment inserted successfully
-            header("Location: ../comments/comments.php?id=$vid");
-            exit(); // Stop script execution
-        } 
-        else {
-            // Error inserting comment
-            echo "Error inserting comment: " . mysqli_error($conn);
+        $filename = null;
+        $filetype = null;
+        $filesize = null;
+        if(isset($_FILES["file"]) && $_FILES["file"]["error"] == 0) {
+            $allowed_images = array("jpg" => "image/jpg", "png" => "image/png", "jpeg" => "image/jpeg");
+            $allowed_videos = array("mp4" => "video/mp4", "avi" => "video/x-msvideo", "mov" => "video/quicktime", "wmv" => "video/x-ms-wmv", "flv" => "video/x-flv", "webm" => "video/webm", "mkv" => "video/x-matroska");
+            $filename = $_FILES["file"]["name"];
+            $filetype = $_FILES["file"]["type"];
+            $filesize = $_FILES["file"]["size"];
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            if (array_key_exists($ext, $allowed_images) || array_key_exists($ext, $allowed_videos)) {
+                if (in_array($filetype, $allowed_images) || in_array($filetype, $allowed_videos)) {
+                    move_uploaded_file($_FILES["file"]["tmp_name"], "../cimgupload/".$filename);
+                    echo "Your file was uploaded successfully.";
+                }
+                else {
+                    echo "Error: please select a valid file format.";
+                }
+            }
         }
+        // Insert the comment into the database
+        $query = "INSERT INTO comments (text, rating, email, video_id, username, date, name, type, size) VALUES ('$comment', '$rating', '$email', '$vid', '$usname', '$date', '$filename', '$filetype', ' $filesize')";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+        // Redirect back to the video page
+        header("Location: comments.php?id=".$vid);
+        exit();
     }
-    else {
-        echo "Error inserting comment: session variables not set";
-    }
-}
-else {
-    echo "Error inserting comment: comment not set";
 }
 ?>

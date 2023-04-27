@@ -75,7 +75,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             } else {
                 echo "Error: Please enter a title."."<br>";
             }
-        } else {
+        } 
+        else {
             echo "Error: Please upload a file."."<br>";
         }
     } 

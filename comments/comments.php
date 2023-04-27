@@ -62,13 +62,13 @@ $row = $result->fetch_assoc();
                         <p><?php echo $row['username'] ; ?>&nbsp; &bull;500k subscribers</p><br>
                         <div>
                             <i  id="like" class="bi bi-hand-thumbs-up"><span class="like-count">&nbsp;123</span></i>
-                            <i id="dislike " class="bi bi-hand-thumbs-down"><span class="like-count">&nbsp;12</span></i>
+                            <i id="dislike " class="bi bi-hand-thumbs-down"><span class="dislike-count">&nbsp;12</span></i>
                             <i class="bi bi-share">&nbsp;Share</i>
                             <i class="bi bi-download">&nbsp;Download</i>
                             <button type="submit">Subscribe</button>
                         </div>
                     </div>
-                    <div class="publisher">
+    <div class="publisher">
         <p class="input6">12K views &nbsp; &nbsp;&nbsp;&bull;<?php echo date('F j, Y', strtotime($row['date'])); ?></p>
         <i>This video tells us about the food culture and the places </i>
     </div>
@@ -78,6 +78,7 @@ $row = $result->fetch_assoc();
         <div class="acomm">
         <input type="hidden" name="vid" id="vid" value="<?php echo $row['video_id']; ?>">
     <input  type="search" name="comment" id="comment" placeholder="Write a comment..."></input>
+    <input type="file" name="file" id="fileselect"><br>
     <label for="Gender" class="input1">Please rate the video</label>
       <select class="input1" id="rating" name="rating">
        <option>1</option>
@@ -90,23 +91,35 @@ $row = $result->fetch_assoc();
         </div>
     </form>
     <?php
-    // query the database for comments on the video
-    $commentResult = $conn->query("SELECT * FROM comments WHERE video_id = $id");
-    while ($commentRow = $commentResult->fetch_assoc()) {
-    ?>
+// query the database for comments on the video
+$commentResult = $conn->query("SELECT * FROM comments WHERE video_id = $id");
+while ($commentRow = $commentResult->fetch_assoc()) {
+    if ($commentRow['type'] && ($commentRow['type'] == 'image/jpeg' || $commentRow['type'] == 'image/png')) { 
+        // echo "<img src='upload/".$filename."' alt='image'>";
+        echo "<img src='../cimgupload/" . $commentRow['name'] . "' alt='image' width='500' height='500'>";
+    } 
+    elseif ($commentRow['type'] && ($commentRow['type'] == 'video/mp4' || $commentRow['type'] == 'video/quicktime')) {
+        // <video controls="" autoplay="" loop="">
+        //                     <source src="<?php echo 'upload/'.$row['name'];
+        echo '<video width="0" height="200" controls>
+        <source src="../cimgupload/' . $commentRow['name'] . '" type="' . $commentRow['type'] . '">
+    </video>';
+    }
+?>
     <div class="prevcom">
         <!-- <img src="<?php echo $commentRow['user_image']; ?>"> -->
         <div class="pcam">
             <h3><?php echo $commentRow['username'] ; ?>&nbsp;&bull;&nbsp;<?php echo date('F j, Y', strtotime($commentRow['date']));?></h3>
             <p><?php echo $commentRow['text']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; video rating &nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;<?php echo $commentRow['rating']; ?> </p>
+            
             <i class="bi bi-hand-thumbs-up"><span class="like-count1">&nbsp;12</span></i>
-            <i class="bi bi-hand-thumbs-down"><span class="like-count">&nbsp;2</span></i>
-            <a href="#"><i>Replay</a></i>
+            <i class="bi bi-hand-thumbs-down"><span class="dislike-count">&nbsp;2</span></i>
+            <a href="../reply/reply.php"><i>Reply</a></i>
         </div>
     </div>
-    <?php
-    }
-    ?>
+<?php
+}
+?>
 </div>
 </div>
                 <div class="side">
