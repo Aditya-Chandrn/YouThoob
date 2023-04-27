@@ -58,5 +58,21 @@ if(isset($_POST['comment1'])) {
         header("Location: comments.php?id=".$vid);
         exit();
     }
+$vid = $_POST['vid'];
+$sql = "SELECT rating FROM comments WHERE video_id='$vid'";
+$result = $conn->query($sql);
+if($result->num_rows > 0) {
+    $total_ratings = 0;
+    $num_comments = $result->num_rows;
+    while($row = $result->fetch_assoc()) {
+        $total_ratings += $row['rating'];
+    }
+    $avg_rating = $total_ratings / $num_comments;
+    
+    echo "Average rating for video ".$vid.": ".$avg_rating;
+} 
+else {
+    echo "No comments found for video ".$vid;
+}
 }
 ?>

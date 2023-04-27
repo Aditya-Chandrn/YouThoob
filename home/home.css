@@ -106,6 +106,8 @@ nav ul li a{
     /* padding-top: 1vh; */
 }
 .input5{
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 13vh;
     margin-left: 20vw;
 }
@@ -150,7 +152,8 @@ nav ul li a{
     font-size: 25px;
     border-bottom: none;
 }
-.input17{
+.input5 .input17{
+    width: 2vw;
     padding-left: 2%;
     background-color: bisque;
 }

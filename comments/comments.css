@@ -238,12 +238,15 @@ nav ul li a {
 .comm .acomm ::placeholder{
     font-size: 35px;
 }
+.comm .acomm .input1256{
+    font-size: 200px;
+}
 .comm .acomm button{
     display: inline-block;
     font-size: 150%;
     padding-bottom: 4%;
     margin-top: 40px;
-    margin-right: 55px;
+    margin-right: 65px;
     height: 30px;
     border-radius: 10%;
     flex-wrap: wrap;

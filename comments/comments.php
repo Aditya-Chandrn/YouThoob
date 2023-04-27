@@ -54,12 +54,22 @@ $row = $result->fetch_assoc();
                 <div class="vedio">
                 <video controls="" autoplay="" loop="">
                 <source src="<?php echo '../uploaded_vid/'.$row['name'];?>">
-</video>
+                </video>
                     <div class="tag">
                         <h3><?php echo $row['title'];?></h3>
                     </div>
                     <div class="info">
-                        <p><?php echo $row['username'] ; ?>&nbsp; &bull;500k subscribers</p><br>
+                    <p><?php echo $row['username'] ; ?>&nbsp; &bull;500k subscribers</p><br>
+     <?php
+        $vid = $row['video_id'];
+        $sql2 = "SELECT AVG(rating) as avg_rating FROM comments WHERE video_id='$vid'";
+        $result2 = $conn->query($sql2);
+        if($result2->num_rows > 0) {
+            $row2 = $result2->fetch_assoc();
+            $avg_rating = round($row2['avg_rating'], 1);
+            echo '<p>Average rating: ' . $avg_rating . '</p>';
+        }
+    ?>
                         <div>
                             <i  id="like" class="bi bi-hand-thumbs-up"><span class="like-count">&nbsp;123</span></i>
                             <i id="dislike " class="bi bi-hand-thumbs-down"><span class="dislike-count">&nbsp;12</span></i>
@@ -78,17 +88,19 @@ $row = $result->fetch_assoc();
         <div class="acomm">
         <input type="hidden" name="vid" id="vid" value="<?php echo $row['video_id']; ?>">
     <input  type="search" name="comment" id="comment" placeholder="Write a comment..."></input>
-    <input type="file" name="file" id="fileselect"><br>
-    <label for="Gender" class="input1">Please rate the video</label>
-      <select class="input1" id="rating" name="rating">
-       <option>1</option>
-       <option>2</option>
-       <option>3</option>
-       <option>4</option>
-       <option>5</option>
-    </select>
+    <input type="file" name="file" id="fileselect">
+    <div class="input1256">
+        <select class="input1" id="rating" name="rating">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <label for="Gender" class="input1">Please rate the video</label>
+    </div>
     <button type="submit" name="comment1" id="comment1">Comment</button>
-        </div>
+    </div>
     </form>
     <?php
 // query the database for comments on the video

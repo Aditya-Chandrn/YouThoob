@@ -59,7 +59,7 @@
             <video width="320" height="240" controls="" autoplay="" loop="">  
             <source src="<?php echo '../uploaded_vid/'.$row['name'];?>">
             </video>
-            <div class="input17">
+      <div class="input17">
     <br><h3 class="input123" style="display: inline-block; font-size:50px "><?php echo $row['title'];?></h3><br>
     <p class="input12">3k views &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('F j, Y', strtotime($row['date'])); ?></p>
     <p class="input12">&nbsp; <?php echo $row['username'];?></p>
