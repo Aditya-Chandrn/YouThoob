@@ -236,10 +236,10 @@ nav ul li a {
    
 }
 .comm .acomm ::placeholder{
-    font-size: 35px;
+    font-size: 105px;
 }
 .comm .acomm .input1256{
-    font-size: 200px;
+    font-size:35px;
 }
 .comm .acomm button{
     display: inline-block;
@@ -279,4 +279,10 @@ nav ul li a {
     justify-content: space-around;
     margin-left: 20px;
     font-size: 150%;
+}
+.o{
+    margin-top: 0.2vh;
+    margin-bottom: 0.5vh;
+    width: 2.5vw;
+    height: 3.5vh;
 }

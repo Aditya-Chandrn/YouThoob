@@ -33,15 +33,15 @@ if(isset($_POST['Sign-up'])){
                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
                 $filetype = $_FILES["file"]["type"];
                 $tempname = $_FILES["file"]["tmp_name"];
-                $folder= "imgupload/".$filename;
+                $folder= "../imgupload/".$filename;
                 if (array_key_exists($ext, $allowed_images)) {
                     if (in_array($filetype, $allowed_images)) {
                         // Upload image and insert file information into database
-                        if (file_exists("imgupload/".$filename)) {
+                        if (file_exists("../imgupload/".$filename)) {
                             echo $filename . " already exists.";
                         } else {
                             move_uploaded_file($tempname,$folder);
-                            $sql = "INSERT INTO createaccount(email,username, password, image) VALUES ('$email' ,'$username', '$password', '$filename')";
+                            $sql = "INSERT INTO createaccount(email,username, password, name,type,size) VALUES ('$email' ,'$username', '$password', '$filename','$filetype','$filesize')";
                             echo "Your image file was uploaded successfully.";
                         }
                     } 

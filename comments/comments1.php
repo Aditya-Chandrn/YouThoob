@@ -5,12 +5,12 @@ include('../db.php'); // Include your database connection file
 // var_dump($_SESSION); // Debug: check session variables
 // var_dump($_POST); // Debug: check form data
 
-if(isset($_POST['comment1'])) {
+if(isset($_POST['comment1'])){
     if(isset($_SESSION['email']) && isset($_POST['vid'])) {
         $email = $_SESSION['email'];
         $vid = $_POST['vid'];
         $sql = "SELECT video_id FROM video WHERE video_id='$vid'";
-        $sql1="SELECT  username,email,image FROM createaccount WHERE email='".$_SESSION['email']."'";
+        $sql1="SELECT  username,email,name FROM createaccount WHERE email='".$_SESSION['email']."'";
         $result = $conn->query($sql);
         $result1 = $conn->query($sql1);
         if($result->num_rows == 0) {
@@ -28,11 +28,12 @@ if(isset($_POST['comment1'])) {
         $comment = $_POST['comment'];
         $rating = $_POST['rating'];
         $usname = $row1['username'];
+        $img1 = $row1['name'];
         $date = date('Y-m-d H:i:s');
         $filename = null;
         $filetype = null;
         $filesize = null;
-        if(isset($_FILES["file"]) && $_FILES["file"]["error"] == 0) {
+        if(isset($_FILES["file"]) && $_FILES["file"]["error"] == 0){
             $allowed_images = array("jpg" => "image/jpg", "png" => "image/png", "jpeg" => "image/jpeg");
             $allowed_videos = array("mp4" => "video/mp4", "avi" => "video/x-msvideo", "mov" => "video/quicktime", "wmv" => "video/x-ms-wmv", "flv" => "video/x-flv", "webm" => "video/webm", "mkv" => "video/x-matroska");
             $filename = $_FILES["file"]["name"];
@@ -50,7 +51,7 @@ if(isset($_POST['comment1'])) {
             }
         }
         // Insert the comment into the database
-        $query = "INSERT INTO comments (text, rating, email, video_id, username, date, name, type, size) VALUES ('$comment', '$rating', '$email', '$vid', '$usname', '$date', '$filename', '$filetype', ' $filesize')";
+        $query = "INSERT INTO comments (text, rating, email, video_id, username, user_image, date, name, type, size) VALUES ('$comment', '$rating', '$email', '$vid', '$usname','$img1', '$date', '$filename', '$filetype', ' $filesize')";
         $stmt = mysqli_prepare($conn, $query);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
@@ -69,7 +70,8 @@ if($result->num_rows > 0) {
     }
     $avg_rating = $total_ratings / $num_comments;
     
-    echo "Average rating for video ".$vid.": ".$avg_rating;
+    // echo "Average rating for video ".$vid.": ".$avg_rating;
+    // echo .$vid. .$num_comments;
 } 
 else {
     echo "No comments found for video ".$vid;

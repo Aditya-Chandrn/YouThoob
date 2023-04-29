@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 $title = $_POST['title'];
                 $date = date('Y-m-d H:i:s');
 
-                $sql = "SELECT user_id, username,email,image FROM createaccount WHERE email='".$_SESSION['email']."'";
+                $sql = "SELECT user_id, username,email,name FROM createaccount WHERE email='".$_SESSION['email']."'";
                 $result = $conn->query($sql);
 
                 // Check if user exists in database
@@ -42,7 +42,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                     $id = $row['email'];
                     $username=$row['username'];
                     $acid = $row['user_id'];
-                    $img = $row['image'];
+                    $img = $row['name'];
 
                     // Check if file is a video
                     if (array_key_exists($ext, $allowed_videos)) {
@@ -52,8 +52,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                 echo $filename . " already exists.";
                             } else {
                                 move_uploaded_file($_FILES["file"]["tmp_name"], '../uploaded_vid/'.$filename);
-                                $sql = "INSERT INTO video (name, type, size, title, username, email,images_source,user_id,date) 
-                                        VALUES ('$filename', '$filetype', '$filesize', '$title', '$username', '$id', '$img','$acid','$date')";
+                                $sql = "INSERT INTO video (name, type, size, title, username, email,user_id,date,image_name) 
+                                        VALUES ('$filename', '$filetype', '$filesize', '$title', '$username', '$id','$acid','$date','$img')";
                                 if ($conn->query($sql) === TRUE) {
                                     $vid = $conn->insert_id;
                                     echo "Video file information was inserted into database successfully."."<br>";

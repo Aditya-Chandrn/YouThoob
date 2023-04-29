@@ -14,13 +14,11 @@
     <link rel="stylesheet" href="comments.css">
 </head>
 <body>
- 
-
-        <nav>
+    <nav>
             <div class='yt'>
                 <img src="https://www.liblogo.com/img-logo/yo482f28b-youtube-icon-logo-free-youtube-logo-icon-symbol-png-svg-download.png"
                 class='input7' />
-        </div>
+            </div>
         <ul>
             <lable class='ot'>YouThoob</lable>
             <li class='rt'>
@@ -29,21 +27,27 @@
                 </li>
                 <i class="bi bi-mic-fill" style="height: 100px;"></i>
                 <div class="input1">
+                <?php
+        include('../db.php');
+        session_start();
+        $q="SELECT * FROM video";
+        $r="SELECT * FROM createaccount WHERE email='".$_SESSION['email']."'";
+        $query=mysqli_query($conn,$q);
+        $query1=mysqli_query($conn,$r);
+        $row1=mysqli_fetch_array($query1);
+        ?>
                     <li><a href="../home/home.php"><i class="bi bi-house-door"></i></a></li>
                     <li><a href="../login/login.html"><i class="bi bi-box-arrow-right"></i></a></li>
                     <li><a href="../upload_vid/createvideo.html"><i class="bi bi-camera-video"></i></a></li>
                  
                     <li><a href="#"><i class="bi bi-bell"></i></a></li>
-                    <li><a href="#"><img src="images/wpl\google.jpg.png"></a></li>
+                    <li><a href="#" ><img class="o" src="<?php echo '../imgupload/'.$row1['name'];?>"></a></li>
                 </div>
-            </ul>
-            
-        </nav>
+        </ul>
+    </nav>
         <div class="input5">
             <div class="row">
             <?php
-session_start();
-include('../db.php');
 $id = $_GET['id'];
 // query the database for the video information
 $result = $conn->query("SELECT * FROM video WHERE video_id = $id");
@@ -59,15 +63,20 @@ $row = $result->fetch_assoc();
                         <h3><?php echo $row['title'];?></h3>
                     </div>
                     <div class="info">
-                    <p><?php echo $row['username'] ; ?>&nbsp; &bull;500k subscribers</p><br>
+                    <p><img class="o" src="<?php echo '../imgupload/'.$row['image_name'];?>">&nbsp;&nbsp;&nbsp;<?php echo $row['username'];?></p>
      <?php
         $vid = $row['video_id'];
         $sql2 = "SELECT AVG(rating) as avg_rating FROM comments WHERE video_id='$vid'";
+        $sql3 = "SELECT COUNT(DISTINCT comment_id) as num_comments FROM comments WHERE video_id='$vid'";
         $result2 = $conn->query($sql2);
+        $result3 = $conn->query($sql3);
         if($result2->num_rows > 0) {
             $row2 = $result2->fetch_assoc();
+            $row3 = $result3->fetch_assoc();
             $avg_rating = round($row2['avg_rating'], 1);
+            $num_comments = $row3['num_comments'];
             echo '<p>Average rating: ' . $avg_rating . '</p>';
+            echo '<p> rated by: ' . $num_comments . ' people </p>';
         }
     ?>
                         <div>
@@ -83,7 +92,7 @@ $row = $result->fetch_assoc();
         <i>This video tells us about the food culture and the places </i>
     </div>
     <div class="comm">
-    <h1>30&nbsp;Comments</h1><br>
+    <h1><?php echo  $row3['num_comments'] ?> &nbsp;Comments</h1><br>
     <form action="comments1.php" method="post" enctype="multipart/form-data">
         <div class="acomm">
         <input type="hidden" name="vid" id="vid" value="<?php echo $row['video_id']; ?>">
@@ -113,7 +122,7 @@ while ($commentRow = $commentResult->fetch_assoc()) {
     elseif ($commentRow['type'] && ($commentRow['type'] == 'video/mp4' || $commentRow['type'] == 'video/quicktime')) {
         // <video controls="" autoplay="" loop="">
         //                     <source src="<?php echo 'upload/'.$row['name'];
-        echo '<video width="0" height="200" controls>
+     echo '<video width="0" height="200" controls>
         <source src="../cimgupload/' . $commentRow['name'] . '" type="' . $commentRow['type'] . '">
     </video>';
     }
@@ -121,7 +130,7 @@ while ($commentRow = $commentResult->fetch_assoc()) {
     <div class="prevcom">
         <!-- <img src="<?php echo $commentRow['user_image']; ?>"> -->
         <div class="pcam">
-            <h3><?php echo $commentRow['username'] ; ?>&nbsp;&bull;&nbsp;<?php echo date('F j, Y', strtotime($commentRow['date']));?></h3>
+            <h3><img class="o" src="<?php echo '../imgupload/'.$commentRow['user_image'];?>">&nbsp;&nbsp;&nbsp;<?php echo $commentRow['username'] ; ?>&nbsp;&bull;&nbsp;<?php echo date('F j, Y', strtotime($commentRow['date']));?></h3>
             <p><?php echo $commentRow['text']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; video rating &nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;<?php echo $commentRow['rating']; ?> </p>
             
             <i class="bi bi-hand-thumbs-up"><span class="like-count1">&nbsp;12</span></i>
@@ -147,7 +156,8 @@ while ($commentRow = $commentResult->fetch_assoc()) {
                             <source src="<?php echo '../uploaded_vid/'.$row['name'];?>">
                             </video>
                             <div class="vidinfo">
-                                <p><?php echo $row['title'];?> &nbsp;&nbsp;&bull; <?php echo $row['username']; ?></p>
+                                <p><?php echo $row['title'];?> &nbsp;&nbsp;&bull; </p>
+                               <p> <img class="o" src="<?php echo '../imgupload/'.$row['image_name'];?>">&nbsp;&nbsp;&nbsp;<?php echo $row['username'];?></p>
                                 <p>15k views</p>
                             </div>
                     </a>

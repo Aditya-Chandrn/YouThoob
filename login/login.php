@@ -9,7 +9,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $stmt = $conn->prepare("SELECT * FROM createaccount WHERE email = ? AND password = ?");
     $stmt->bind_param("ss", $email, $password);
     $stmt->execute();
-    
     // get the result
     $result = $stmt->get_result();
   
