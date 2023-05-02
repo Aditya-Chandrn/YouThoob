@@ -21,12 +21,6 @@
             </div>
         <ul>
             <lable class='ot'>YouThoob</lable>
-            <li class='rt'>
-                <input type="search" class="searchbox" placeholder='search'><button type="submit" class="input3"><i
-                    class="bi bi-search"></i></button>
-                </li>
-                <i class="bi bi-mic-fill" style="height: 100px;"></i>
-                <div class="input1">
                 <?php
         include('../db.php');
         session_start();
@@ -35,7 +29,15 @@
         $query=mysqli_query($conn,$q);
         $query1=mysqli_query($conn,$r);
         $row1=mysqli_fetch_array($query1);
-        ?>
+        ?>      
+               <li class='rt'>
+            <form action="search.php" method="GET">
+                <input type="search" class="searchbox" name="search" id="search" placeholder='search'><button type="submit"  class="input3"><i
+                    class="bi bi-search"></i></button>
+                </li>
+            </form>
+                <!-- <i class="bi bi-mic-fill" style="height: 100px;"></i> -->
+                <div class="input1">
                     <li><a href="../home/home.php"><i class="bi bi-house-door"></i></a></li>
                     <li><a href="../login/login.html"><i class="bi bi-box-arrow-right"></i></a></li>
                     <li><a href="../upload_vid/createvideo.html"><i class="bi bi-camera-video"></i></a></li>
@@ -48,14 +50,15 @@
         <div class="input5">
             <div class="row">
             <?php
-$id = $_GET['id'];
-// query the database for the video information
-$result = $conn->query("SELECT * FROM video WHERE video_id = $id");
-$row = $result->fetch_assoc();
+  $id = $_GET['id'];
+ $_SESSION['id'] = $id;
+ // query the database for the video information
+ $result = $conn->query("SELECT * FROM video WHERE video_id = $id");
+  $row = $result->fetch_assoc();
 
-?>
+ ?>
 
-                <div class="vedio">
+<div class="vedio">
                 <video controls="" autoplay="" loop="">
                 <source src="<?php echo '../uploaded_vid/'.$row['name'];?>">
                 </video>
@@ -89,7 +92,7 @@ $row = $result->fetch_assoc();
                     </div>
     <div class="publisher">
         <p class="input6">12K views &nbsp; &nbsp;&nbsp;&bull;<?php echo date('F j, Y', strtotime($row['date'])); ?></p>
-        <i>This video tells us about the food culture and the places </i>
+        <i>This video tells us about the food culture and the places</i>
     </div>
     <div class="comm">
     <h1><?php echo  $row3['num_comments'] ?> &nbsp;Comments</h1><br>
@@ -112,9 +115,9 @@ $row = $result->fetch_assoc();
     </div>
     </form>
     <?php
-// query the database for comments on the video
-$commentResult = $conn->query("SELECT * FROM comments WHERE video_id = $id");
-while ($commentRow = $commentResult->fetch_assoc()) {
+  // query the database for comments on the video
+   $commentResult = $conn->query("SELECT * FROM comments WHERE video_id = $id");
+  while ($commentRow = $commentResult->fetch_assoc()) {
     if ($commentRow['type'] && ($commentRow['type'] == 'image/jpeg' || $commentRow['type'] == 'image/png')) { 
         // echo "<img src='upload/".$filename."' alt='image'>";
         echo "<img src='../cimgupload/" . $commentRow['name'] . "' alt='image' width='500' height='500'>";
@@ -122,31 +125,60 @@ while ($commentRow = $commentResult->fetch_assoc()) {
     elseif ($commentRow['type'] && ($commentRow['type'] == 'video/mp4' || $commentRow['type'] == 'video/quicktime')) {
         // <video controls="" autoplay="" loop="">
         //                     <source src="<?php echo 'upload/'.$row['name'];
-     echo '<video width="0" height="200" controls>
+     echo '<video width="100" height="200" controls>
         <source src="../cimgupload/' . $commentRow['name'] . '" type="' . $commentRow['type'] . '">
     </video>';
     }
-?>
+ ?>
     <div class="prevcom">
-        <!-- <img src="<?php echo $commentRow['user_image']; ?>"> -->
         <div class="pcam">
             <h3><img class="o" src="<?php echo '../imgupload/'.$commentRow['user_image'];?>">&nbsp;&nbsp;&nbsp;<?php echo $commentRow['username'] ; ?>&nbsp;&bull;&nbsp;<?php echo date('F j, Y', strtotime($commentRow['date']));?></h3>
             <p><?php echo $commentRow['text']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; video rating &nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;<?php echo $commentRow['rating']; ?> </p>
             
             <i class="bi bi-hand-thumbs-up"><span class="like-count1">&nbsp;12</span></i>
             <i class="bi bi-hand-thumbs-down"><span class="dislike-count">&nbsp;2</span></i>
-            <a href="../reply/reply.php"><i>Reply</a></i>
+            <a href="../reply/reply.php?cid=<?php echo $commentRow['comment_id']; ?>"><i>Reply</a></i>
+        
+        </div><br><br>
+<!-- <?php
+$cid = $_GET['cid'];
+// Retrieve replies for the comment
+$replyQuery = "SELECT * FROM reply WHERE comment_id = '$cid'";
+$ReplyResult = $conn->query($replyQuery);
+// Loop through all replies in reverse order
+while ($ReplyRow = $ReplyResult->fetch_assoc()) {
+    "<br><br>";
+    if ($ReplyRow['type'] && ($ReplyRow['type'] == 'image/jpeg' || $ReplyRow['type'] == 'image/png')) { 
+        // echo "<img src='upload/".$filename."' alt='image'>";
+        echo "<img src='../cimgupload/" . $ReplyRow['name'] . "' alt='image' width='500' height='500'>";
+    } 
+    elseif ($ReplyRow['type'] && ($ReplyRow['type'] == 'video/mp4' || $ReplyRow['type'] == 'video/quicktime')) {
+        // <video controls="" autoplay="" loop="">
+        //                     <source src="<?php echo 'upload/'.$row['name'];
+        echo '<video width="100" height="200" controls>
+        <source src="../cimgupload/' . $ReplyRow['name'] . '" type="' . $ReplyRow['type'] . '">
+    </video>';
+    }
+?>
+    <br><br><div class="comment">
+        <div class="pcam">
+            <h3><img class="o" src="<?php echo '../imgupload/'.$ReplyRow['user_image'];?>">&nbsp;&nbsp;&nbsp;<?php echo $ReplyRow['username'] ; ?>&nbsp;&bull;&nbsp;<?php echo date('F j, Y', strtotime($ReplyRow['date']));?></h3>
+            <p><?php echo $ReplyRow['text']; ?></p>
         </div>
+    </div>
+<?php
+}
+?> -->
     </div>
 <?php
 }
 ?>
 </div>
-</div>
+    </div>
                 <div class="side">
                 <?php
         include('../db.php');
-        $q="SELECT * FROM video";
+        $q= "SELECT video.*, AVG(comments.rating) AS avg_rating FROM comments Right JOIN video ON video.video_id = comments.video_id  GROUP BY video.video_id ORDER BY avg_rating DESC";
         $query=mysqli_query($conn,$q);
         while($row=mysqli_fetch_array($query)){
           ?>
@@ -158,7 +190,7 @@ while ($commentRow = $commentResult->fetch_assoc()) {
                             <div class="vidinfo">
                                 <p><?php echo $row['title'];?> &nbsp;&nbsp;&bull; </p>
                                <p> <img class="o" src="<?php echo '../imgupload/'.$row['image_name'];?>">&nbsp;&nbsp;&nbsp;<?php echo $row['username'];?></p>
-                                <p>15k views</p>
+                                <p>15k views&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('F j, Y', strtotime($row['date'])); ?></p>
                             </div>
                     </a>
 <?php

@@ -40,37 +40,35 @@ body{
     width: 3vw;
     height:6vh;
 }
-.input3
-{
-    background-color:transparent;
+.input3 {
+    background-color: transparent;
     border: transparent;
     float: right;
-    margin-top: 2vh;
-    padding-right:1.5vw;
-    padding-left:1vw;
-    /* padding-top: 1vh; */
-    border-left: 0.2px solid gray;
+    padding-right: 37px;
+    padding-top: 8px;
 }
-.searchbox{
-    padding-top: 1vh;   
-    /* background-color: transparent; */
+
+.searchbox {
+    height: 37.5px;
+    padding-top: 5px;
+    background-color: transparent;
     outline: none;
-    font-size:3vh;
+    font-size: 150%;
     border: transparent;
-    /* border-right: 0.2px solid grey ; */
-}   
-.rt{
-    
+    border-right: 0.2px solid grey;
+}
+
+.rt {
+
     /* padding-bottom: 5px; */
     background-color: white;
     padding-left: 2%;
-    width: 35vw;
-    height:6vh;
-    border-radius:20px;
-    border: 0.2px solid grey ;
-    outline:none;
+    width: 30vw;
+    height: 6vh;
+    border-radius: 20px;
+    border: 0.2px solid grey;
+    outline: none;
     margin-left: 110px;
-    /* margin-top: 2vh; */
 }
 nav{
     background-color:white;
@@ -174,6 +172,7 @@ nav ul li a{
 .o{
     margin-top: 0.2vh;
     margin-bottom: 0.5vh;
+    border-radius: 5%;
     width: 2.5vw;
     height: 3.5vh;
 }

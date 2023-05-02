@@ -41,7 +41,8 @@ if(isset($_POST['comment1'])){
             $filesize = $_FILES["file"]["size"];
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
             if (array_key_exists($ext, $allowed_images) || array_key_exists($ext, $allowed_videos)) {
-                if (in_array($filetype, $allowed_images) || in_array($filetype, $allowed_videos)) {
+                if (in_array($filetype, $allowed_images) || in_array($filetype, $allowed_videos)) 
+                {
                     move_uploaded_file($_FILES["file"]["tmp_name"], "../cimgupload/".$filename);
                     echo "Your file was uploaded successfully.";
                 }
@@ -59,22 +60,4 @@ if(isset($_POST['comment1'])){
         header("Location: comments.php?id=".$vid);
         exit();
     }
-$vid = $_POST['vid'];
-$sql = "SELECT rating FROM comments WHERE video_id='$vid'";
-$result = $conn->query($sql);
-if($result->num_rows > 0) {
-    $total_ratings = 0;
-    $num_comments = $result->num_rows;
-    while($row = $result->fetch_assoc()) {
-        $total_ratings += $row['rating'];
-    }
-    $avg_rating = $total_ratings / $num_comments;
-    
-    // echo "Average rating for video ".$vid.": ".$avg_rating;
-    // echo .$vid. .$num_comments;
-} 
-else {
-    echo "No comments found for video ".$vid;
 }
-}
-?>

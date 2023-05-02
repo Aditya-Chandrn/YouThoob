@@ -12,7 +12,7 @@
 </head>
 <body>
   
-    <form>
+    
         <nav>
             <div class='yt'>
                 <div class="">
@@ -35,20 +35,22 @@
                 </div>
             </div>
             <ul>
-            <li class='rt'>
-            <input type="search" class="searchbox" placeholder='Search'>
-            <button type="submit" class="input3"><i class="bi bi-search"></i></button>
-            </li>
-            <!-- <i class="bi bi-mic-fill" style="height: 100px;"></i> -->
             <?php
-        include('../db.php');
-        session_start();
-        $q="SELECT * FROM video";
-        $r="SELECT * FROM createaccount WHERE email='".$_SESSION['email']."'";
-        $query=mysqli_query($conn,$q);
-        $query1=mysqli_query($conn,$r);
-        $row1=mysqli_fetch_array($query1);
-        ?>
+       include('../db.php');
+       session_start();
+       $q="SELECT * FROM video";
+       $r="SELECT * FROM createaccount WHERE email='".$_SESSION['email']."'";
+       $query=mysqli_query($conn,$q);
+       $query1=mysqli_query($conn,$r);
+       $row1=mysqli_fetch_array($query1);
+       ?>      
+              <li class='rt'>
+           <form action="../comments/search.php" method="GET">
+               <input type="search" class="searchbox" name="search" id="search" placeholder='search'><button type="submit"  class="input3"><i
+                   class="bi bi-search"></i></button>
+               </li>
+           </form>
+            <!-- <i class="bi bi-mic-fill" style="height: 100px;"></i> -->
                       <div class="input1">
                     
                         <li><a href="../login/login.html"><i class="bi bi-box-arrow-right"></i></a></li>
@@ -79,6 +81,6 @@
 }
 ?>
 
-    </form>
+  
 </body>
 </html>

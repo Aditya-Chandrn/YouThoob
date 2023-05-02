@@ -46,10 +46,12 @@ body {
     border: transparent;
     float: right;
     padding-right: 37px;
-    padding-top: 6px;
+    padding-top: 8px;
 }
 
 .searchbox {
+    height: 40px;
+    padding-top: 5px;
     background-color: transparent;
     outline: none;
     font-size: 150%;
@@ -283,6 +285,11 @@ nav ul li a {
 .o{
     margin-top: 0.2vh;
     margin-bottom: 0.5vh;
+    border-radius: 5%;
     width: 2.5vw;
     height: 3.5vh;
+}
+.input13{
+    color: black;
+    text-decoration: none;
 }
