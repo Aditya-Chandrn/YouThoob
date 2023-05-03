@@ -55,9 +55,7 @@
  // query the database for the video information
  $result = $conn->query("SELECT * FROM video WHERE video_id = $id");
   $row = $result->fetch_assoc();
-
- ?>
-
+?>
 <div class="vedio">
                 <video controls="" autoplay="" loop="">
                 <source src="<?php echo '../uploaded_vid/'.$row['name'];?>">
