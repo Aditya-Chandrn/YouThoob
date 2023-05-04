@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ICON -->
+    <link rel="icon" type="image/jpg" href="../images/icon.png"/>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- BOOTSTRAP -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -14,14 +25,12 @@
     <link rel="stylesheet" href="comments.css">
 </head>
 <body>
-    <nav>
-            <div class='yt'>
-                <img src="https://www.liblogo.com/img-logo/yo482f28b-youtube-icon-logo-free-youtube-logo-icon-symbol-png-svg-download.png"
-                class='input7' />
-            </div>
-        <ul>
-            <lable class='ot'>YouThoob</lable>
-                <?php
+    <div class="headbar">
+        <div class="yt"> 
+            <img class="yt-icon" src="../images/icon.png"/> 
+            <div class="yt-head">You2ube</div>
+        </div>
+                 <?php
         include('../db.php');
         session_start();
         $q="SELECT * FROM video";
@@ -29,24 +38,23 @@
         $query=mysqli_query($conn,$q);
         $query1=mysqli_query($conn,$r);
         $row1=mysqli_fetch_array($query1);
-        ?>      
-               <li class='rt'>
-            <form action="search.php" method="GET">
-                <input type="search" class="searchbox" name="search" id="search" placeholder='search'><button type="submit"  class="input3"><i
-                    class="bi bi-search"></i></button>
-                </li>
-            </form>
-                <!-- <i class="bi bi-mic-fill" style="height: 100px;"></i> -->
-                <div class="input1">
-                    <li><a href="../home/home.php"><i class="bi bi-house-door"></i></a></li>
-                    <li><a href="../login/login.html"><i class="bi bi-box-arrow-right"></i></a></li>
-                    <li><a href="../upload_vid/createvideo.html"><i class="bi bi-camera-video"></i></a></li>
-                 
-                    <li><a href="#"><i class="bi bi-bell"></i></a></li>
-                    <li><a href="#" ><img class="o" src="<?php echo '../imgupload/'.$row1['name'];?>"></a></li>
-                </div>
+        ?>       
+        <form action="search.php" method="GET">
+            <div class="searchbox">
+                <input type="search" class="search" name="search" id="Search" placeholder='search'>
+                <button type="submit" class="submit"><i class="bi bi-search"></i></button>
+            </div>
+            </li>
+        </form>
+            <div class="links">
+                <a href="../home/home.php"><i class="bi bi-house-door"></i></a></li>
+                <a href="../upload_vid/createvideo.html"><i class="bi bi-plus-square"></i></a></li>
+                <a href="#"><i class="bi bi-bell"></i></a></li>
+                <!-- <a href="#" ><img class="g-icon" src="../images/google.png"></a></li> -->
+                <a href="../login/login.html"><i class="bi bi-box-arrow-right"></i></a></li>
+            </div>
         </ul>
-    </nav>
+    </div>
         <div class="input5">
             <div class="row">
             <?php
@@ -96,21 +104,19 @@
     <h1><?php echo  $row3['num_comments'] ?> &nbsp;Comments</h1><br>
     <form action="comments1.php" method="post" enctype="multipart/form-data">
         <div class="acomm">
-        <input type="hidden" name="vid" id="vid" value="<?php echo $row['video_id']; ?>">
-    <input  type="search" name="comment" id="comment" placeholder="Write a comment..."></input>
-    <input type="file" name="file" id="fileselect">
-    <div class="input1256">
+            <input type="hidden" name="vid" id="vid" value="<?php echo $row['video_id']; ?>">
+            <input  class="com1" type="search" name="comment" id="comment" placeholder="Write a comment..."></input>
+            <input type="file" name="file" id="fileselect">
+        <div class="input1256">
         <select class="input1" id="rating" name="rating">
+            <label for="rating" class="input1">Select rating</label>
             <option>1</option>
             <option>2</option>
             <option>3</option>
             <option>4</option>
             <option>5</option>
         </select>
-        <label for="Gender" class="input1">Please rate the video</label>
-    </div>
-    <button type="submit" name="comment1" id="comment1">Comment</button>
-    </div>
+        <button type="submit" name="comment1" id="comment1">Comment</button>
     </form>
     <?php
   // query the database for comments on the video
@@ -190,7 +196,7 @@ while ($ReplyRow = $ReplyResult->fetch_assoc()) {
                                <p> <img class="o" src="<?php echo '../imgupload/'.$row['image_name'];?>">&nbsp;&nbsp;&nbsp;<?php echo $row['username'];?></p>
                                 <p>15k views&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('F j, Y', strtotime($row['date'])); ?></p>
                             </div>
-                    </a>
+                        </a>
 <?php
 }
 ?>
