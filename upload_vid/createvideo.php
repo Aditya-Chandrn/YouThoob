@@ -30,6 +30,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 $filesize = $_FILES["file"]["size"];
                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
                 $title = $_POST['title'];
+                $desc = $_POST['desc'];
                 $date = date('Y-m-d H:i:s');
 
                 $sql = "SELECT user_id, username,email,name FROM createaccount WHERE email='".$_SESSION['email']."'";
@@ -52,8 +53,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                 echo $filename . " already exists.";
                             } else {
                                 move_uploaded_file($_FILES["file"]["tmp_name"], '../uploaded_vid/'.$filename);
-                                $sql = "INSERT INTO video (name, type, size, title, username, email,user_id,date,image_name) 
-                                        VALUES ('$filename', '$filetype', '$filesize', '$title', '$username', '$id','$acid','$date','$img')";
+                                $sql = "INSERT INTO video (name, type, size, title,description, username, email,user_id,date,image_name) 
+                                        VALUES ('$filename', '$filetype', '$filesize', '$title','$desc','$username', '$id','$acid','$date','$img')";
                                 if ($conn->query($sql) === TRUE) {
                                     $vid = $conn->insert_id;
                                     echo "Video file information was inserted into database successfully."."<br>";

@@ -102,12 +102,17 @@ body {
     padding-bottom: 10%;
 }
 
-
+.view{
+    display: flex;
+    
+}
 
 .input5 {
-    margin-top: 100px;
+    display: flex;
+    margin-top: 5vh;
     padding-left: 5%;
     flex-direction: row;
+    justify-content: space-around;
 }
 
 .row {
@@ -117,7 +122,7 @@ body {
 }
 
 .vedio {
-    flex-basis: 69%;
+    flex-basis: 65%;
 }
 
 .vedio video {
@@ -125,7 +130,7 @@ body {
 }
 
 .side {
-    flex-basis: 30%;
+    flex-basis: 25%;
 }
 
 .sidevedio video {
