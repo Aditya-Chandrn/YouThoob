@@ -52,7 +52,7 @@ if(isset($_GET['search']))
 {
     $query = $_GET['search'];
     // $sql = "SELECT * FROM video WHERE title LIKE '%$query%'";
-    $sql = "SELECT video.*, AVG(comments.rating) as avg_rating FROM video LEFT JOIN comments ON video.video_id = comments.video_id WHERE video.title LIKE '%$query%' GROUP BY video.video_id ORDER BY avg_rating DESC";
+    $sql = "SELECT video.*, AVG(rating.rating) as avg_rating FROM video LEFT JOIN rating ON video.video_id = rating.video_id WHERE video.title LIKE '%$query%' GROUP BY video.video_id ORDER BY avg_rating DESC";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0)
     {

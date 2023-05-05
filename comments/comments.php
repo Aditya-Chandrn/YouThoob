@@ -67,17 +67,20 @@
                     <p><img class="o" src="<?php echo '../imgupload/'.$row['image_name'];?>">&nbsp;&nbsp;&nbsp;<?php echo $row['username'];?></p>
      <?php
         $vid = $row['video_id'];
-        $sql2 = "SELECT AVG(rating) as avg_rating FROM comments WHERE video_id='$vid'";
-        $sql3 = "SELECT COUNT(DISTINCT comment_id) as num_comments FROM comments WHERE video_id='$vid'";
+        $sql2 = "SELECT AVG(rating) as avg_rating FROM rating WHERE video_id='$vid'";
+        $sql3 = "SELECT COUNT(DISTINCT rating_id) as num_rating FROM rating WHERE video_id='$vid'";
+        $sql4 = "SELECT COUNT(DISTINCT comment_id) as num_comments FROM comments WHERE video_id='$vid'";
         $result2 = $conn->query($sql2);
         $result3 = $conn->query($sql3);
+        $result4 = $conn->query($sql4);
         if($result2->num_rows > 0) {
             $row2 = $result2->fetch_assoc();
             $row3 = $result3->fetch_assoc();
+            $row4 = $result4->fetch_assoc();
             $avg_rating = round($row2['avg_rating'], 1);
-            $num_comments = $row3['num_comments'];
+            $num_rating = $row3['num_rating'];
             echo '<p>Average rating: ' . $avg_rating . '</p>';
-            echo '<p> rated by: ' . $num_comments . ' people </p>';
+            echo '<p> rated by: ' . $num_rating . ' people </p>';
         }
     ?>
                         <div>
@@ -93,24 +96,28 @@
         <i>This video tells us about the food culture and the places</i>
     </div>
     <div class="comm">
-    <h1><?php echo  $row3['num_comments'] ?> &nbsp;Comments</h1><br>
+    <h1><?php echo  $row4['num_comments'] ?> &nbsp;Comments</h1><br>
     <form action="comments1.php" method="post" enctype="multipart/form-data">
         <div class="acomm">
         <input type="hidden" name="vid" id="vid" value="<?php echo $row['video_id']; ?>">
     <input  type="search" name="comment" id="comment" placeholder="Write a comment..."></input>
     <input type="file" name="file" id="fileselect">
-    <div class="input1256">
-        <select class="input1" id="rating" name="rating">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-        </select>
-        <label for="Gender" class="input1">Please rate the video</label>
-    </div>
     <button type="submit" name="comment1" id="comment1">Comment</button>
-    </div>
+</div>
+</form>
+<form action="../rating/rating.php" method="post">
+        <div class="input1256">
+        <input type="hidden" name="vid" id="vid" value="<?php echo $row['video_id']; ?>">
+            <select class="input1" id="rating" name="rating">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+            <label for="Gender" class="input1">Please rate the video</label>
+        </div>
+        <button type="submit" name="rating1" id="rating1">Rating</button>
     </form>
     <?php
   // query the database for comments on the video
@@ -176,7 +183,7 @@ while ($ReplyRow = $ReplyResult->fetch_assoc()) {
                 <div class="side">
                 <?php
         include('../db.php');
-        $q= "SELECT video.*, AVG(comments.rating) AS avg_rating FROM comments Right JOIN video ON video.video_id = comments.video_id  GROUP BY video.video_id ORDER BY avg_rating DESC";
+        $q= "SELECT video.*, AVG(rating.rating) AS avg_rating FROM rating Right JOIN video ON video.video_id = rating.video_id  GROUP BY video.video_id ORDER BY avg_rating DESC";
         $query=mysqli_query($conn,$q);
         while($row=mysqli_fetch_array($query)){
           ?>

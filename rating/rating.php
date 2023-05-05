@@ -1,8 +1,7 @@
 <?php
 session_start(); // Start the session
 include('../db.php');
-if(isset($_POST['rating'])){
-    if(isset($_SESSION['email']) && isset($_POST['vid'])) {
+if(isset($_POST['rating1']) && isset($_SESSION['email']) && isset($_POST['vid'])) { 
         $vid = $_POST['vid'];
         $sql = "SELECT * FROM rating  WHERE email='{$_SESSION['email']}' and video_id='$vid'";
         $result = $conn->query($sql);
@@ -32,14 +31,18 @@ if(isset($_POST['rating'])){
             $stmt = mysqli_prepare($conn, $query);
             if (mysqli_stmt_execute($stmt)) {
                 // Rating was inserted successfully, redirect back to the video page
-                header("Location: comments.php?id=".$vid);
+                header("Location: ../comments/comments.php?id=".$vid);
                 exit();
-            } else {
+            } 
+            else {
                 // Rating was not inserted, display an error message
                 echo "Error inserting rating";
             }
             mysqli_stmt_close($stmt);
         }
-    }
+    
+}
+else{
+    echo "Please rate the video";
 }
 ?>
