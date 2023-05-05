@@ -32,6 +32,7 @@ if(isset($_POST['Sign-up'])){
             else {
                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
                 $filetype = $_FILES["file"]["type"];
+                $filesize = $_FILES["file"]["size"];
                 $tempname = $_FILES["file"]["tmp_name"];
                 $folder= "../imgupload/".$filename;
                 if (array_key_exists($ext, $allowed_images)) {

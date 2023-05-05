@@ -1,0 +1,106 @@
+
+:root{
+    --light-black: #949494;
+    --red: #FF0000;
+}
+
+*{
+    padding:0%;
+    margin: 0%;
+    font-family: 'Cabin', sans-serif;
+}
+
+.head{
+    width: 100vw;
+    font-size: 3vw;
+    font-weight: bold;
+    text-align: center;
+    height: 8vh;
+    padding: 2vh 0;
+    border-bottom: solid 1px var(--red);
+    box-shadow: 0 1px 2px var(--red);
+}
+
+.upload-file{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 40vh;
+    margin-left: 25vw;
+    margin-top: 15vh;
+    border: 1px solid var(--red);
+    border-radius: 10px;
+    padding: 10vh 0;
+}
+
+/* select */
+.select{
+    width: 40vw;
+    display: flex;
+}
+
+.select-title{
+    font-size: 2vw;
+}
+
+.upload-btn{
+    margin-left: 5vw;
+    width: 20vw;
+    font-size: 1.5vw;
+}
+
+
+/* title */
+.title{
+    margin-top: 10vh;
+    display: flex;
+    width: 40vw;
+    height: 40vh;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.title-head{
+    margin-bottom: 5vh;
+    margin-right: 2vw;
+    font-size: 2vw;
+}
+
+.title-area{
+    border-radius: 3px;
+    height: 7vh;
+    width: 40vw;
+    resize: none;
+    font-size: 2vw;
+    border: 1px solid var(--light-black);
+    margin-top: -5vh;
+    vertical-align: middle;
+}
+
+/* description */
+
+.desc-area{
+    border-radius: 3px;
+    height: 20vh;
+    width: 40vw;
+    resize: none;
+    font-size: 2vw;
+    border: 1px solid var(--light-black);
+    margin-top: -5vh;
+    vertical-align: middle;
+}
+
+
+/* create button  */
+.create{
+    border: 0;
+    background-color: var(--red);
+    padding: 1vw 1.5vw;
+    font-size: 2vw;
+    color: white;
+    border-radius: 5px;
+    margin-left: 46vw;
+    margin-top: 2vh;
+}
