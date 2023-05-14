@@ -53,12 +53,11 @@ body{
 .signup{
     margin: -12.5vh auto;
     padding: 4vw;
-    height: 90vh;
+    height: 200vh;
     width: 40vw;
     background-color: white;
     border-radius: 5px;
 }
-
 .s-head{
     margin-top: -5vh;
     width: 100%;

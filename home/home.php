@@ -13,8 +13,6 @@
 </head>
 
 <body>
-
-
   <nav>
     <div class='yt'>
       <div class="">

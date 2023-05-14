@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-    <!-- ICON -->
-    <link rel="icon" type="image/jpg" href="../images/icon.png"/>
+  <!-- ICON -->
+  <link rel="icon" type="image/jpg" href="../images/icon.png"/>
 
-    <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <!-- LINKED FILES  -->
-    <link rel="stylesheet" href="signup.css">
-    <script src="signup.js"></script>
-    <title>Sign Up</title>
+  <!-- LINKED FILES  -->
+  <link rel="stylesheet" href="signup.css">
+  <script src="signup.js"></script>
+  <title>Sign Up</title>
 </head>
 <body>
 
   <div class="yt-head">
     <img src="../images/youtube_icon.jpg" class='yt-icon' /> YouThoob
   </div>
-
   <section class="signup">
 
     <div class="s-head">Sign Up</div>
@@ -49,10 +48,16 @@
       <div class="upload">
         <div class="select">Upload profile picture : </div> <div><input type="file" name="file" id="file" class="form-control" id="customFile" /></div>
       </div>
-<a href="2"></a>
+      <a href="2"></a>
       <button type="submit" class="submit-btn register"name="Sign-up" value="Sign-up">Register</button>
-
     </form>
+    <form action="delete.php" method="Post">
+        <div class="i1"><br>
+            <!-- <div class="i-head">Username</div> -->
+            <input type="text" name="username" class='i-box' id="username" placeholder=" Username to delete your account" required><br>
+        </div>
+        <button type="submit" class="submit-btn register"name="Sign-up" value="Sign-up">DELETE</button>
+      </form>
   </section>
 </body>
 </html>

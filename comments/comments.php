@@ -47,11 +47,12 @@
             </li>
         </form>
             <div class="links">
-                <a href="../home/home.html"><i class="bi bi-house-door"></i></a></li>
+                <a href="../home/home.php"><i class="bi bi-house-door"></i></a></li>
                 <a href="../upload_vid/createvideo.html"><i class="bi bi-plus-square"></i></a></li>
                 <a href="#"><i class="bi bi-bell"></i></a></li>
                 <!-- <a href="#" ><img class="g-icon" src="../images/google.png"></a></li> -->
                 <a href="../login/login.html"><i class="bi bi-box-arrow-right"></i></a></li>
+                <a href="#"><img class="o" src="<?php echo '../imgupload/' . $row1['name']; ?>"></a></li>
             </div>
         </ul>
     </div>
@@ -102,7 +103,7 @@
                     </div>
     <div class="publisher">
         <p class="input6">12K views &nbsp; &nbsp;&nbsp;&bull;<?php echo date('F j, Y', strtotime($row['date'])); ?></p>
-        <i>This video tells us about the food culture and the places</i>
+        <i><?php echo $row['description'];?></i>
     </div>
     <div class="comm">
     <h1><?php echo  $row4['num_comments'] ?> &nbsp;Comments</h1><br>
@@ -111,12 +112,12 @@
         <input type="hidden" name="vid" id="vid" value="<?php echo $row['video_id']; ?>">
     <input  type="search" name="comment" id="comment" placeholder="Write a comment..."></input>
     <input type="file" name="file" id="fileselect">
-    <button type="submit" name="comment1" id="comment1">Comment</button>
-</div>
+    <button type="submit" name="comment1" id="comment1">Comment</button><br><br>
 </form>
-<form action="../rating/rating.php" method="post">
+    <form action="../rating/rating.php" method="post">
         <div class="input1256">
-        <input type="hidden" name="vid" id="vid" value="<?php echo $row['video_id']; ?>">
+            <label for="Gender" class="input1">Please rate the video</label>
+            <input type="hidden" name="vid" id="vid" value="<?php echo $row['video_id']; ?>">
             <select class="input1" id="rating" name="rating">
                 <option>1</option>
                 <option>2</option>
@@ -124,10 +125,10 @@
                 <option>4</option>
                 <option>5</option>
             </select>
-            <label for="Gender" class="input1">Please rate the video</label>
         </div>
         <button type="submit" name="rating1" id="rating1">Rating</button>
-    </form>
+    </div>
+</form>
     <?php
   // query the database for comments on the video
    $commentResult = $conn->query("SELECT * FROM comments WHERE video_id = $id");

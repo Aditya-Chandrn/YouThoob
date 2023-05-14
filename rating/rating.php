@@ -8,7 +8,8 @@ if(isset($_POST['rating1']) && isset($_SESSION['email']) && isset($_POST['vid'])
         if ($result->num_rows > 0) {
             echo "You Cant  rate the video again";
         } 
-        else {
+        else 
+        {
             $rating = $_POST['rating'];
             $sql = "SELECT video_id FROM video WHERE video_id='$vid'";
             $sql1 = "SELECT username, email, name FROM createaccount WHERE email='{$_SESSION['email']}'";

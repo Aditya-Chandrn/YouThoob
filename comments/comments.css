@@ -18,6 +18,13 @@ body {
     display: flex;
     padding: 1.5vh 5vw;
     justify-content: space-between;
+    position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: #ffffff;
+
 }
 
 /* youtube icon */
@@ -45,6 +52,7 @@ body {
     height: 8vh;
     border-radius: 4vh;
     padding: 0 1vw;
+    outline: none;
 }
 
 .search{
@@ -109,7 +117,7 @@ body {
 
 .input5 {
     display: flex;
-    margin-top: 5vh;
+    margin-top: 15vh;
     padding-left: 5%;
     flex-direction: row;
     justify-content: space-around;
