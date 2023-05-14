@@ -12,7 +12,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         if(isset($_FILES["file"]) && $_FILES["file"]["error"] == 0) {
 
             // Check if title is entered
-            if(isset($_POST['title']) && !empty($_POST['title'])) {
+            if(isset($_POST['title']) && !empty($_POST['title'])) 
+            {
 
                 // Check file type and allowed file types
                 $allowed_videos = array(
@@ -35,6 +36,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
                 $sql = "SELECT user_id, username,email,name FROM createaccount WHERE email='".$_SESSION['email']."'";
                 $result = $conn->query($sql);
+                // $result = mysqil_query($conn,$sql);
 
                 // Check if user exists in database
                 if ($result->num_rows > 0) {
@@ -64,13 +66,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                     echo "Error: " . $sql . "<br>" . $conn->error;
                                 }
                             }
-                        } else {
+                        } 
+                        else {
                             echo "Error: Invalid file type."."<br>";
                         }
-                    } else {
+                    } 
+                    else {
                         echo "Error: Invalid file extension."."<br>";
                     }
-                } else {
+                } 
+                else {
                     echo "Error: User does not exist in database."."<br>";
                 }
             } else {

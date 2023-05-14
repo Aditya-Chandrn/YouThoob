@@ -148,7 +148,7 @@
     <div class="prevcom">
         <div class="pcam">
             <h3><img class="o" src="<?php echo '../imgupload/'.$commentRow['user_image'];?>">&nbsp;&nbsp;&nbsp;<?php echo $commentRow['username'] ; ?>&nbsp;&bull;&nbsp;<?php echo date('F j, Y', strtotime($commentRow['date']));?></h3>
-            <p><?php echo $commentRow['text']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; video rating &nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;<?php echo $commentRow['rating']; ?> </p>
+            <p><?php echo $commentRow['text']; ?></p>
             
             <i class="bi bi-hand-thumbs-up"><span class="like-count1">&nbsp;12</span></i>
             <i class="bi bi-hand-thumbs-down"><span class="dislike-count">&nbsp;2</span></i>

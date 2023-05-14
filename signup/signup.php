@@ -5,14 +5,16 @@ if(isset($_POST['Sign-up'])){
     $email=$_POST['email'];
     $password =$_POST['password'];
     $username=$_POST['username'];
-   
-    if(empty($username)){
+    if(empty($username))
+    {
         echo "Please enter all the creditals ";
     }
-    if(empty($email) || empty($password)) {
+    if(empty($email) || empty($password)) 
+    {
         echo "Please enter both User ID and Password";
     }
-    else {
+    else 
+    {
         $sql = "SELECT * FROM createaccount WHERE email='$email'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {

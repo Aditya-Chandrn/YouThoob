@@ -1,8 +1,8 @@
 <?php 
 include ("../db.php");
-$user= $_POST['username'];
-if(isset($_POST['username']))
+if(isset($_POST['delete']))
 {
+    $user= $_POST['username'];
     if(empty($user))
     {
     echo  "Please enter User ID ";
@@ -17,14 +17,16 @@ if(isset($_POST['username']))
     else
     {
         $q1 ="DELETE fROM createaccount where email='$user'";
-        $result1= $conn->query($q1);
+        // $result1= $conn->query($q1);
+        $result1= mysqli_query($conn,$q1);
         if($result1 == True)
         {
         header("Location:../login/login.html");
         }
         else
         {
-            echo "there was an error while deleting an account";
+            header("Location: signup.html");
+            echo "There was an error while deleting an account";
         }
 
     }

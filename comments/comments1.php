@@ -26,7 +26,7 @@ if(isset($_POST['comment1'])){
         $row1 = $result1->fetch_assoc();
         // Use prepared statements to insert the comment
         $comment = $_POST['comment'];
-        $rating = $_POST['rating'];
+        // $rating = $_POST['rating'];
         $usname = $row1['username'];
         $img1 = $row1['name'];
         $date = date('Y-m-d H:i:s');
@@ -52,7 +52,7 @@ if(isset($_POST['comment1'])){
             }
         }
         // Insert the comment into the database
-        $query = "INSERT INTO comments (text, rating, email, video_id, username, user_image, date, name, type, size) VALUES ('$comment', '$rating', '$email', '$vid', '$usname','$img1', '$date', '$filename', '$filetype', ' $filesize')";
+        $query = "INSERT INTO comments (text, email, video_id, username, user_image, date, name, type, size) VALUES ('$comment', '$email', '$vid', '$usname','$img1', '$date', '$filename', '$filetype', ' $filesize')";
         $stmt = mysqli_prepare($conn, $query);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);

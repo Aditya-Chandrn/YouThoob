@@ -30,7 +30,7 @@
             <img class="yt-icon" src="../images/icon.png"/> 
             <div class="yt-head">You2ube</div>
         </div>
-                 <?php
+        <?php
         include('../db.php');
         session_start();
         $q="SELECT * FROM video";
@@ -61,7 +61,12 @@ if(isset($_GET['search']))
 {
     $query = $_GET['search'];
     // $sql = "SELECT * FROM video WHERE title LIKE '%$query%'";
-    $sql = "SELECT video.*, AVG(rating.rating) as avg_rating FROM video LEFT JOIN rating ON video.video_id = rating.video_id WHERE video.title LIKE '%$query%' GROUP BY video.video_id ORDER BY avg_rating DESC";
+    $sql = "SELECT video.*, AVG(rating.rating) as avg_rating 
+    FROM video 
+    LEFT JOIN rating ON video.video_id = rating.video_id 
+    WHERE video.title LIKE '%$query%' OR video.description LIKE '%$query%' 
+    GROUP BY video.video_id 
+    ORDER BY avg_rating DESC";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0)
     {

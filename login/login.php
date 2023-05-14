@@ -14,7 +14,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $result = $stmt->get_result();
   
     // check if the result is not empty
-    if($result->num_rows > 0){
+    if($result->num_rows > 0)
+    {
         // redirect to home.php
         $_SESSION['email'] = $email;
         header("Location: ../home/home.php");
@@ -22,6 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     }
     else{
         // alert("Invalid Email ID AND PASSWORD");
+        echo "<script>alert('Invalid Email ID AND PASSWORD');</script>";
         header("Location: ../login/login.html");
     }
 }
