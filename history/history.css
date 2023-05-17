@@ -1,0 +1,291 @@
+* {
+    padding: 0%;
+    margin: 0%;
+    font-family: 'Cabin',sans-serif;
+    box-sizing: border-box;
+}
+/* body{
+    background-image: url("https://images-ext-2.discordapp.net/external/VA0rr0mk0aBKQSr4I7TXQiWBxXopnhWr-RNp5KmcJZ8/https/wpimg.pixelied.com/blog/wp-content/uploads/2020/08/28041815/Youtube-Collage.jpg?width=702&height=468");background-repeat: no-repeat;background-size: 120%;
+} */
+body {
+    background-color: none;
+}
+
+
+.headbar{
+    height: 12vh;
+    border-bottom: 1px solid;
+    display: flex;
+    padding: 1.5vh 5vw;
+    justify-content: space-between;
+    position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: #ffffff;
+
+}
+
+/* youtube icon */
+
+.yt {
+    display: flex;
+    margin-top: 1vh;
+}
+
+.yt-icon{
+    margin-top: -2vh;
+    height: 10vh;
+}
+
+.yt-head{
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+/* searchbox */
+
+.searchbox{
+    border: 1px solid black;
+    width: 30vw;
+    height: 8vh;
+    border-radius: 4vh;
+    padding: 0 1vw;
+    outline: none;
+}
+
+.search{
+    width: 90%;
+    border: 0;
+}
+
+.submit{
+    width: 7%;
+    border: 0;
+    background-color: white;
+    justify-content: right;
+}
+
+
+
+/* icons */
+
+.links{
+    margin-top: 1vh;
+    width: 20vw;
+    display: flex;
+    justify-content: space-around;    
+}
+
+.bi{
+    color: black;
+    font-size: 2vw;
+}
+
+.g-icon{
+    height: 2vw;
+    width: 2vw;
+    margin-top: 1vh;
+}
+
+
+
+.input3 {
+    background-color: transparent;
+    border: transparent;
+    float: right;
+    padding-right: 37px;
+    padding-top: 8px;
+}
+
+
+
+.input7 {
+    /* height: 55vh;
+ width: 27vh; */
+    background-color: white;
+    background-color: transparent;
+    padding-left: 60%;
+    padding-bottom: 10%;
+}
+
+.view{
+    display: flex;
+    
+}
+
+.input5 {
+    display: flex;
+    margin-top: 15vh;
+    padding-left: 5%;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
+}
+
+.vedio {
+    flex-basis: 65%;
+}
+
+.vedio video {
+    width: 100%;
+}
+
+.side {
+    flex-basis: 25%;
+}
+
+.sidevedio video {
+    width: 100%;
+}
+
+.st {
+    color: black;
+    text-decoration: none;
+}
+
+.vedio .info{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap ;
+}
+.info {
+    border-bottom: 1px solid gray;
+    font-size: 25px;
+    /* height:100vh; */
+}
+
+.info i {
+    margin-left: 35px;
+    display: inline;
+}
+
+.tag h3 {
+    font-size: 250%;
+    padding-left: 5%;
+}
+
+.input6 {
+    padding-left: 2.5%;
+}
+
+.publisher {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    font-size: 150%;
+    border-bottom: 0.2px solid gray;
+}
+.info button {
+    justify-content: space-between;
+    margin-left: 25px;
+    margin-right: 100px;
+    background-color: red;
+    color: white;
+    width: 15vw;
+    height: 7vh;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    outline: none;
+    border: transparent;
+    display: inline;
+}
+.publisher i{
+
+    margin-left: 25px;
+}
+.comm h1{
+    font-size: 50px;
+    padding-left: 5%;
+    padding-top: 2%;
+    height: 2px;
+}
+.comm .acomm input{
+    display: inline;
+    box-sizing: content-box;
+    width:60vw;
+    height:8vh;
+    font-size:2.5vw;
+    text-align:left;
+    color:black;
+    float:left;
+    padding-left:5%;
+    font-family: 'Cabin', sans-serif;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    background-color: transparent;
+    border-bottom:transparent;
+    outline: none;
+    padding-left: 1%;
+}
+
+.comm .acomm{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    
+}
+.comm .acomm ::placeholder{
+    font-size: 2.5vw;
+}
+.comm .acomm .input1256{
+    font-size:2vw;
+}
+.comm .acomm button{
+    display: inline-block;
+    font-size: 2vw;
+    padding: 0.5vh 1vw;
+    margin-top: 40px;
+    margin-right: 65px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    text-decoration: none;
+}
+.prevcom{
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+    margin-left: 20px;
+}
+.revcom .pcam{
+    margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+}
+.pcam h3{
+    font-size: 150%;
+}
+.pcam p{
+    font-size: 140%;
+}
+.pcam a{
+    margin-left: 50px;
+    color: black;
+    text-decoration: none;
+}
+.pcam i{
+    display: inline;
+    justify-content: space-around;
+    margin-left: 20px;
+    font-size: 150%;
+}
+.o{
+    margin-top: 1vh;
+    margin-bottom: 0vh;
+    border-radius: 5%;
+    width: 2.5vw;
+    height: 3.5vh;
+}
+.input13{
+    color: black;
+    text-decoration: none;
+}

@@ -27,8 +27,8 @@
         <!-- <a href="#" class="bi bi-house-door">&nbsp;&nbsp;Explore</a><br><br> -->
         <a href="#" class="bi bi-collection-play">&nbsp;&nbsp;Subscription</a><br><br>
         <a href="#" class="bi bi-bag">&nbsp;&nbsp;Library</a><br><br>
-        <a href="#" class="bi bi-eye">&nbsp;&nbsp;History</a><br><br>
-        <a href="#" class="bi bi-house">&nbsp;&nbsp;Playist</a><br><br>
+        <a href="../history/history1.php" class="bi bi-eye">&nbsp;&nbsp;History</a><br><br>
+        <a href="../my videos/myvideos.php" class="bi bi-house">&nbsp;&nbsp;My videos</a><br><br>
         <div class="parts"></div>
         <a href="#" class="bi bi-gear">&nbsp;&nbsp;Settings</a><br><br>
         <a href="../login/login.html" class="bi bi-box-arrow-right">&nbsp;&nbsp;Logout</a><br><br>
@@ -65,7 +65,7 @@
     while ($row = mysqli_fetch_array($query)) {
     ?>
       &nbsp;&nbsp;&nbsp;<div style="display: inline-block;">
-        <a href="../comments/comments.php?id=<?php echo $row['video_id']; ?>" class="input13">
+      <a href="../comments/comments.php?id=<?php echo $row['video_id']; ?>" class="input13" onclick="addToHistory(<?php echo $row['video_id']; ?>)">
           <video width="320" height="240" controls="" autoplay="" loop="">
             <source src="<?php echo '../uploaded_vid/' . $row['name']; ?>">
           </video>
@@ -81,7 +81,5 @@
     }
     ?>
 
-
 </body>
-
 </html>

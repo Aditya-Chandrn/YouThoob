@@ -126,7 +126,7 @@
                 <option>5</option>
             </select>
         </div>
-        <button type="submit" name="rating1" id="rating1">Rating</button>
+        <button type="submit" name="rating1" id="rating1">Rate</button>
     </div>
 </form>
     <?php
